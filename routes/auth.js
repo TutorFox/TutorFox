@@ -23,6 +23,7 @@ var auth = function(req, res){
       return;
     }
 
+    console.log(body);
     var jsonResponse = JSON.parse(body);
 
     //here you will put the validation for a new user
@@ -32,7 +33,7 @@ var auth = function(req, res){
         //TODO
         // call the requests for information
         //from cetys api
-        User.save({user: req.user});
+        //User.save({user: req.user});
       }
     });
 
