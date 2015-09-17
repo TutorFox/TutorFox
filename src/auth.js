@@ -35,18 +35,17 @@ let auth = {
 
 }
 function sendRequest (user, pass, cb) {
-  $.post({
+  alert('request sent');
+  $.ajax({
     url: '/login',
+    type:'POST',
     data: {user: user, password: pass},
     success: function (data, textStatus) {
-      if(textStatus === "success") {
-        cb({
-          authenticated: true,
-          token: obj.token
-        });
-      } else {
-        cb({ authenticated: false });
-      }
+      var obj = JSON.parse(data);
+      cb({
+        authenticated: true,
+        token: obj.token
+      });
     },
     error: function (xhr, status, err) {
       cb({authenticated: false });
