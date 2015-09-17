@@ -1,6 +1,7 @@
 var request = require('request');
 var mongoose = require('mongoose');
 var User = require('../models/User');
+var createNewUser = require('../helpers/createNewUser');
 
 var auth = function(req, res){
   console.log("inside auth!!")
@@ -28,12 +29,19 @@ var auth = function(req, res){
 
     //here you will put the validation for a new user
     //using mongoose
-    User.findOne({user : req.body.user}, function(err,user) {
+    console.log('matricula');
+    console.log(req.body.user)
+    User.findOne({user : ''+req.body.user}, function(err,user) {
+      console.log('dbresponse');
+      console.log(user);
       if(!user) {
+        console.log('new user');
         //TODO
         // call the requests for information
         //from cetys api
-        //User.save({user: req.user});
+        createNewUser(''+req.body.user, jsonResponse.token);
+      } else {
+        console.log('existing user');
       }
     });
 
