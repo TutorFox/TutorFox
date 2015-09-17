@@ -5,7 +5,7 @@ let auth = {
       this.onChange(true);
       return;
     }
-    pretendRequest(user, pass, (res) => {
+    sendRequest(user, pass, (res) => {
       if (res.authenticated) {
         localStorage.token = res.token;
         if (cb) cb(true);
@@ -34,17 +34,24 @@ let auth = {
   onChange () {}
 
 }
-function pretendRequest (user, pass, cb) {
-  setTimeout(() => {
-    if(user === 'm012345' && pass === 'qwerty') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7)
-      })
-    } else {
-      cb({ authenticated: false });
+function sendRequest (user, pass, cb) {
+  $.post({
+    url: '/login',
+    data: {user: user, password: pass},
+    success: function (data, textStatus) {
+      if(textStatus === "success") {
+        cb({
+          authenticated: true,
+          token: obj.token
+        });
+      } else {
+        cb({ authenticated: false });
+      }
+    },
+    error: function (xhr, status, err) {
+      cb({authenticated: false });
     }
-  }, 100);
+  });
 }
 
 export default auth

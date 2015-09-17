@@ -45,7 +45,10 @@
     "webpack-hot-middleware": "^2.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.14.0",
+    "mongoose": "^4.1.7",
     "react": "^0.13.0",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "request": "^2.62.0"
   }
 }
