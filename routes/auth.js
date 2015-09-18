@@ -45,7 +45,7 @@ var auth = function(req, res){
       }
     });
 
-    res.send(JSON.stringify({token: jsonResponse.token}));	
+    res.send(JSON.stringify({token: jsonResponse.token, user: req.body.user}));	
   });
 }
 
