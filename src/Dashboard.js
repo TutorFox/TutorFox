@@ -20,8 +20,22 @@ var mainstyle = {
 }
 
 export var Dashboard = requireAuth(class extends React.Component {
+  constructor() {
+    super();
+    this.state = {name: "", email : ""};
+  }
   handleLogout () {
     auth.logout();
+  }
+
+  componentDidMount(){
+    $.ajax({
+      url: '/users/'+localStorage.user+'/settings',
+      type: 'GET',
+      success: function (data) {
+        this.setState({name: data.name, email: data.email});
+      }.bind(this)
+    })
   }
   render () {
     return (
@@ -44,6 +58,7 @@ export var Dashboard = requireAuth(class extends React.Component {
 									<li><a href="#about">About</a></li>
 									<li><a href="#contact">Contact Us</a></li>
 								</ul>
+                                                                <p className="navbar-text navbar-right"><u><small>Logged in as: {this.state.name}</small></u></p>
 								<Link to="login"><button onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn navbar-right" href="frontpage.html">
 									Log Out
 								</button></Link>
@@ -72,10 +87,10 @@ export var Dashboard = requireAuth(class extends React.Component {
 									<form>
 										<div className="form-group">
 											<label for="emailSet">E-Mail</label>
-											<input type="email" className="form-control" id="emailSet" placeholder="user@example.domain"/>
+											<input type="email" className="form-control" id="emailSet" value={this.state.email}/>
 										</div>
 										<div className="form-group">
-											<label for="telSet">Password</label>
+											<label for="telSet">Telephone</label>
 											<input type="tel" className="form-control" id="telSet" placeholder="XXX-XXX-XXXX"/>
 										</div>
 										<button type="button" className="btn btn-primary">Confirm</button>

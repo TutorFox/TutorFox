@@ -8,6 +8,7 @@ let auth = {
     sendRequest(user, pass, (res) => {
       if (res.authenticated) {
         localStorage.token = res.token;
+        localStorage.user = res.user;
         if (cb) cb(true);
         this.onChange(true);
       } else {
@@ -35,7 +36,6 @@ let auth = {
 
 }
 function sendRequest (user, pass, cb) {
-  alert('request sent');
   $.ajax({
     url: '/login',
     type:'POST',
@@ -44,7 +44,8 @@ function sendRequest (user, pass, cb) {
       var obj = JSON.parse(data);
       cb({
         authenticated: true,
-        token: obj.token
+        token: obj.token,
+        user: obj.user
       });
     },
     error: function (xhr, status, err) {
