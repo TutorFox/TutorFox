@@ -2,9 +2,13 @@ import React from 'react';
 import Router from 'react-router';
 let {Link} = Router;
 
+var namepad = {
+	paddingRight: '10px'
+}
+
 export default class GeneralNavbar extends React.Component {
   render() {
-    const name = (<p className="navbar-text navbar-right"><u><small>Logged in as: {this.props.name}</small></u></p>);
+    const name = (<p className="navbar-text navbar-right" style={namepad}><u><small>Logged in as: {this.props.name}</small></u></p>);
 
     return (
       <div className="navbar-wrapper">
