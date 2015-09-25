@@ -3,6 +3,7 @@ import React from 'react';
 import Router from 'react-router';
 let { Link } = Router;
 import auth from './auth';
+import GeneralNavbar from './GeneralNavbar';
 
 var rowstyle = {
 	paddingTop: '30px'
@@ -23,6 +24,7 @@ export var Dashboard = requireAuth(class extends React.Component {
   constructor() {
     super();
     this.state = {name: "", email : ""};
+    this.handleLogout = this.handleLogout.bind(this);
   }
   handleLogout () {
     auth.logout();
@@ -39,34 +41,10 @@ export var Dashboard = requireAuth(class extends React.Component {
   }
   render () {
     return (
-			<div>
-				<div className="row">
-					<nav className="navbar navbar-inverse navbar-fixed-top">
-						<div className="container-fluid">
-							<div className="navbar-header">
-								<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-									<span className="sr-only">Toggle navigation</span>
-									<span className="icon-bar"></span>
-									<span className="icon-bar"></span>
-									<span className="icon-bar"></span>
-								</button>
-								<a className="navbar-brand" href="#">TutorFox</a>
-							</div>
-							<div id="navbar" className="navbar-collapse collapse">
-								<ul className="nav navbar-nav">
-									<li className="active"><a href="#">Home</a></li>
-									<li><a href="#about">About</a></li>
-									<li><a href="#contact">Contact Us</a></li>
-								</ul>
-                                                                <p className="navbar-text navbar-right"><u><small>Logged in as: {this.state.name}</small></u></p>
-								<Link to="login"><button onClick={this.handleLogout} type="button" className="btn btn-default navbar-btn navbar-right" href="frontpage.html">
-									Log Out
-								</button></Link>
-							</div>
-						</div>
-					</nav>
-				</div>
-
+    <div>
+      <div className="row">
+        <GeneralNavbar loggedIn={true} name={this.state.name} handleClick={this.handleLogout} />
+      </div>
 				<div className="container-fluid">
 					<div className="row" style={rowstyle}>
 						<div className="col-sm-3 col-md-2 sidebar">
@@ -109,5 +87,6 @@ export var Dashboard = requireAuth(class extends React.Component {
     );
   }
 });
-
-
+Dashboard.contextTypes = {
+  router: React.PropTypes.func
+};
