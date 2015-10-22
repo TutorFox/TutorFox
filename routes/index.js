@@ -3,9 +3,9 @@ var router = express.Router();
 var User = require('../models/User');
 
 var auth = require('./auth');
-var settingsRouter = require('./settings');
+var userRouter = require('./users');
 
 router.post('/login', auth);
-router.use('/settings', settingsRouter); 
+router.use('/users', userRouter); 
 
 module.exports = router;

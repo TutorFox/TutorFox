@@ -9,38 +9,24 @@ var createNewUser = function (mat, token) {
       'access-token': token
     }},
     function (err, res, body) {
-      console.log('hola');
-      console.log(body);
-      var obj = JSON.parse(body);
-      console.log(obj);
-      var user = new User({user: mat, name: obj.name, email: obj.email});
-      user.save(function (err, u){
-        if(err) console.log(err);
-        console.log(u);
-      });
-    }
-  );
-  request.get({
-    url: "http://cetys-api.herokuapp.com/api/academicHistory",
-    headers: {
-      'access-token': token
-    }},
-    function (err, res, body){
-      console.log("test");
-      console.log(body);
-      var obj = JSON.parse(body);
-      console.log(obj);
-      User.findOne({user : mat}, function(err,user){
-        if(err){
-          console.log(err);
-          return err;
-        }
-        user.classes = obj.approved; //not sure if you can do that, may have to create a new thing on the models for this
-        user.save(function(err,u){
-          if(err) return err;
-          console.log(u);
-        });
-      });
+      var general = JSON.parse(body);
+      request.get({
+	url: "http://cetys-api.herokuapp.com/api/academicHistory",
+	headers: {
+	  'access-token': token
+	}},
+	function (err, res, body) {
+	  console.log("test");
+	  console.log(body);
+	  var history = JSON.parse(body);
+	  var user = new User({user: mat, name: general.name, email: general.email, classes: history.approved});
+	  user.save(function (err, u) {
+	    if(err) console.log(err);
+	    console.log(u);
+	  });
+	}
+      );
+
     }
   );
 }
