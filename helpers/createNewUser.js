@@ -7,17 +7,26 @@ var createNewUser = function (mat, token) {
     url: "http://cetys-api.herokuapp.com/api/general",
     headers: {
       'access-token': token
-    }}, 
+    }},
     function (err, res, body) {
-      console.log('hola');
-      console.log(body);
-      var obj = JSON.parse(body);
-      console.log(obj);
-      var user = new User({user: mat, name: obj.name, email: obj.email});
-      user.save(function (err, u){
-        if(err) console.log(err);
-        console.log(u);
-      });
+      var general = JSON.parse(body);
+      request.get({
+	url: "http://cetys-api.herokuapp.com/api/academicHistory",
+	headers: {
+	  'access-token': token
+	}},
+	function (err, res, body) {
+	  console.log("test");
+	  console.log(body);
+	  var history = JSON.parse(body);
+	  var user = new User({user: mat, name: general.name, email: general.email, classes: history.approved});
+	  user.save(function (err, u) {
+	    if(err) console.log(err);
+	    console.log(u);
+	  });
+	}
+      );
+
     }
   );
 }
