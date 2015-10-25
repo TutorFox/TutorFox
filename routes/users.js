@@ -10,35 +10,30 @@ usersRouter.get('/:id/', function(req, res) {
       console.log(err);
       return err;
     }
+    console.log(JSON.stringify(user));
     res.send(user);
   });
 });
 
 /**************************************************************************************************
- *	-okay, so the post that needs to go in the frontend needs to contain the following things *
- *	-an id which will contain the student id, m0xxxxx                                	  *
- *	-body will also contain an email containing the new email				  *
- *	-the body can contain number containing the new phone number				  *
+ *      -okay, so the post that needs to go in the frontend needs to contain the following things *
+ *      -an id which will contain the student id, m0xxxxx                                         *
+ *      -body will also contain an email containing the new email                                 *
+ *      -the body can contain number containing the new phone number                              *
  *  -The body can contain new classes to add, they will be called tutorClasses and they will      *
  *      be optional                                                                               *
  *  -Changed the format of the post a little bit so it's easier to test                           *
  *************************************************************************************************/
 
-usersRouter.post('/', function(req, res) {
-  var information = {};
-  information.id = req.body.id;
-  information.email = req.body.email;
-  information.phone = req.body.number;
-  User.findOne({user: information.id}, function(err, user) {
+usersRouter.post('/:id/', function(req, res) {
+  User.findOne({user: req.params.id}, function(err, user) {
     if (err) {
       console.log(err);
       return err;
     }
-    user.email = information.email;
-    if (information.phone != null)
-      user.phone_number = information.phone;
-    if (information.tutorClasses != null)
-      user.tutorClasses = information.tutorClasses
+    user.email = req.body.email || user.email;
+    user.phoneNumber = req.body.phone || user.phone_number;
+    user.tutorClasses = req.body.tutorClasses || user.tutorClasses;
     user.save(function(err) {
       if (err) return err;
       res.send(user);

@@ -5,26 +5,27 @@ let { Link } = Router;
 import auth from './auth';
 import GeneralNavbar from './GeneralNavbar';
 import Settings from './Settings';
+import Registration from './Registration';
 
 var rowstyle = {
-	paddingTop: '30px'
+  paddingTop: '30px'
 }
 
 var sidebar = {
-	position: 'fixed',
-	top: '70px',
-	width: '228px'
+  position: 'fixed',
+  top: '70px',
+  width: '228px'
 }
 
 var mainstyle = {
-	paddingLeft: '50px',
-	paddingTop: '30px'
+  paddingLeft: '50px',
+  paddingTop: '30px'
 }
 
 export var Dashboard = requireAuth(class extends React.Component {
   constructor() {
     super();
-    this.state = {name: "", email : "", classes: []};
+    this.state = {name: "", email : "", classes: [], tutorClasses: []};
     this.handleLogout = this.handleLogout.bind(this);
   }
   handleLogout () {
@@ -36,7 +37,7 @@ export var Dashboard = requireAuth(class extends React.Component {
       url: '/users/'+localStorage.user,
       type: 'GET',
       success: function (data) {
-        this.setState({name: data.name, email: data.email, classes: data.classes});
+        this.setState({name: data.name, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses});
       }.bind(this)
     })
   }
@@ -66,11 +67,7 @@ export var Dashboard = requireAuth(class extends React.Component {
                     <p>Hello, there. I'm not ready <i>yet.</i></p>
                   </div>
                   <Settings email={this.state.email}/>
-                  <div id="register" className="tab-pane fade">
-                    <ul>
-                      {classes}
-                    </ul>
-                  </div>
+                  <Registration  tutorClasses={this.state.tutorClasses} classes={this.state.classes}/>  
                 </div>
               </div>
             </div>

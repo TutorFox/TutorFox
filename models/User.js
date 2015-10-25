@@ -4,7 +4,7 @@ var User = mongoose.Schema({
   user: String,
   name: String,
   email: String,
-  phone_number: String,
+  phoneNumber: String,
   classes: [],
   tutorClasses: []
 });
