@@ -1,6 +1,6 @@
 var User = require('../models/User');
 var request = require('request');
-var createNewUser = function (mat, token) {
+var createNewUser = function (mat, token, callback) {
   console.log('matricula new user');
   console.log(mat);
   request.get({
@@ -23,6 +23,7 @@ var createNewUser = function (mat, token) {
 	  user.save(function (err, u) {
 	    if(err) console.log(err);
 	    console.log(u);
+            callback();
 	  });
 	}
       );
