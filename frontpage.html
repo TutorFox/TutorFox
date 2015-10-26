@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Front page">
+		<meta name="author" content="TutorFox Foundation">
+		<!--The Small Icon on Browser Tab <link rel="icon" href=""> -->
+		<title>Welcome to TutorFox</title>
+		
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+		<link href="/frontpage.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		
+		<!-- Navbar -->
+		<div class="navbar-wrapper">
+			<div class="container">
+				<nav class="navbar navbar-inverse navbar-fixed-top">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">TutorFox</a>
+						</div>
+						<div id="navbar" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="#">Home</a></li>
+								<li><a href="#about">About</a></li>
+								<li><a href="#contact">Contact Us</a></li>
+							</ul>
+							<button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#logInModal">
+         				Log In
+      				</button>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		
+		<!-- Carousel -->
+		<div id="frontCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#frontCarousel" data-slide-to="0" class="active"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img class="first-slide" src="/foxdrawingcropped.png" alt="Drawing of a Fox">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Welcome to Tutor Fox</h1>
+							<p>TutorFox is an academic matchmaking site for students and tutors at CETYS Universidad Mexicali Campus.</p>
+							<p> If you're faculty or a student, don't worry. <strong>You're already signed up.</strong></p>
+							<p><a class="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target="#logInModal">Log In Now</a></p>
+						</div>
+					</div>
+				</div>
+				<!--Possibly more slides here -->
+			</div>
+			<!-- In case of more slides use
+			<a class="left carousel-control" href="#frontCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#frontCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+			-->
+		</div>
+		
+		<!-- logInModal -->
+		<div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLaber">
+			<div class="modal-dialog modal-sm" role="dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="logInModalLabel">Log In with your ID# and Blackboard Password</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="loginID">ID Number</label>
+								<input type="text" class="form-control" id="loginID" placeholder="m0XXXXX">
+							</div>
+							<div class="form-group">
+								<label for="loginPassword">Password</label>
+								<input type="password" class="form-control" id="loginPassword" placeholder="********">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Log In</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Features -->
+		<div class="container marketing">
+			<hr class="featurette-divider">
+			<div class="row featurette">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">Find <u>your</u> ideal tutor.</h2>
+					<p class="lead">TutorFox is designed to help you find a tutor that suits your needs inside the CETYS environment. TutorFox provides you with all sorts of info on your prospective tutor from their grades on the class they are teaching to the price they are asking for their services.</p>
+				</div>
+			</div>
+			<hr class="featurette-divider">
+			<div class="row featurette">
+				<div class="col-md-7 col-md-push-5">
+					<h2 class="featurette-heading">Request and Forget Model</h2>
+					<p class="lead">When you request for a tutor's help a notification is sent to this tutor with your information, all you need to do is sit back and wait for a reply through your e-mail or phone.</p>
+				</div>
+			</div>
+			<hr class="featurette-divider">
+			<div class="row featurette">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">Ready to Step Up?</h2>
+					<p class="lead">
+						TutorFox depends on its community to form a strong academic relationship between students at CETYS. If you feel capable, become a tutor. It's quick, easy, and lets students know about your desire to help. <span class="text-muted">You can get some money out of it as well.</span>
+					</p>
+				</div>
+			</div>
+			<hr class="featurette-divider">
+			
+			<!-- Footer -->
+			<footer>
+				<p class="pull-right"><a href="#">Back to Top</a></p>
+				<p>&copy; 2015 TutorFox</p>
+			</footer>
+		</div>
+		
+		
+		
+		
+		<!-- Bootstrap jS Core -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+	</body>
+	
+</html>
