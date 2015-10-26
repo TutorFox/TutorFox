@@ -39,13 +39,15 @@ var auth = function(req, res){
         //TODO
         // call the requests for information
         //from cetys api
-        createNewUser(''+req.body.user, jsonResponse.token);
+        createNewUser(''+req.body.user, jsonResponse.token, function() {
+          res.send(JSON.stringify({token: jsonResponse.token, user: req.body.user}));	
+        });
       } else {
+        res.send(JSON.stringify({token: jsonResponse.token, user: req.body.user}));	
         console.log('existing user');
       }
     });
 
-    res.send(JSON.stringify({token: jsonResponse.token, user: req.body.user}));	
   });
 }
 
