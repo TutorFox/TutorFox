@@ -6,6 +6,7 @@ import auth from './auth';
 import GeneralNavbar from './GeneralNavbar';
 import Settings from './Settings';
 import Registration from './Registration';
+import Tutors from './Tutors';
 
 var rowstyle = {
   paddingTop: '30px'
@@ -51,21 +52,21 @@ export var Dashboard = requireAuth(class extends React.Component {
             <GeneralNavbar loggedIn={true} name={this.state.name} handleClick={this.handleLogout} />
           </div>
 
-          <div className="container-fluid">
-            <div className="row" style={rowstyle}>
-              <div className="col-sm-3 col-md-2 sidebar">
-                <ul id="sidebar" className="nav nav-pills nav-stacked" style={sidebar}>
-                  <li className="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
-                  <li><a data-toggle="pill" href="#settings">Settings</a></li>
-                  <li><a data-toggle="pill" href="#register">Become a Tutor</a></li>
-                </ul>
+          <div id="everything" className="container-fluid">
+            <div className="row" >
+              <div id="sidebar" className="col-md-2">
+                <div className="sidebar">
+                  <ul id="sidebar" className="nav nav-pills nav-stacked" >
+                    <li className="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
+                    <li><a data-toggle="pill" href="#settings">Settings</a></li>
+                    <li><a data-toggle="pill" href="#register">Become a Tutor</a></li>
+                  </ul>
+                </div>
               </div>
-              <div className=" col-md-9 main" style={mainstyle}>
+
+              <div id="content" className="col-md-10">
                 <div className="tab-content">
-                  <div id="tutors" className="tab-pane fade in active">
-                    <h3>Search for your Tutor</h3>
-                    <p>Hello, there. I'm not ready <i>yet.</i></p>
-                  </div>
+                  <Tutors />
                   <Settings email={this.state.email}/>
                   <Registration  tutorClasses={this.state.tutorClasses} classes={this.state.classes}/>  
                 </div>

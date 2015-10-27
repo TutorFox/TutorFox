@@ -34,8 +34,8 @@ usersRouter.post('/:id/', function(req, res) {
     // we used "shortcircuit or" assignment here.
     user.email = req.body.email || user.email;
     user.phoneNumber = req.body.phone || user.phone_number;
-    user.tutorClasses = req.body.tutorClasses || user.tutorClasses;
     user.price = req.body.price || user.price;
+    user.tutorClasses = req.body.tutorClasses;
     user.save(function(err) {
       if (err) return err;
       res.send(user);

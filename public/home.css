@@ -21,6 +21,7 @@
 
 .panel {
 	width: 1000px;
+        background-color: gold;
 }
 
 .panel-heading {

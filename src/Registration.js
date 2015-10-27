@@ -103,8 +103,12 @@ export default class Registration extends React.Component {
                 <input type="number" min="0" max="999" step="1" id="price" className="form-control" aria-label="Amount"/>
                 <span className="input-group-addon">.00</span>
               </div>
-              <button onClick={this.sendRegistration.bind(this)}>send</button>
             </div>
+          </div>
+          <hr/>
+          <div className="row" style={{paddingLeft: 15}}>
+            <button type="button" className="btn btn-primary" onClick={this.sendRegistration.bind(this)}>Confirm</button>
+            <button type="button" className="btn btn-default">Cancel</button>
           </div>
         </form>
       </div>

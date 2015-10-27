@@ -1,259 +1,261 @@
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Home/Dashboard">
-		<meta name="author" content="TutorFox Foundation">
-		<!--The Small Icon on Browser Tab <link rel="icon" href=""> -->
-		<title>TutorFox - Home</title>
-		<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-		<link href="home.css" type="text/css" rel="stylesheet">
-	</head>
-	<body>
-		<!-- Navbar -->
-		<div class="navbar-wrapper">
-			<div class="container">
-				<nav class="navbar navbar-inverse navbar-fixed-top">
-					<div class="container">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">TutorFox</a>
-						</div>
-						<div id="navbar" class="navbar-collapse collapse">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">Home</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#contact">Contact Us</a></li>
-							</ul>
-							<Link to="login"><button onClick={this.handleLogout} type="button" class="btn btn-default navbar-btn navbar-right" href="frontpage.html">
-								Log Out
-							</button></Link>
-							<p id="loginname" class="navbar-right navbar-text"><u><small>Logged in as: Tony de Luna de los Santos Ruiz y Cipriano Luis y Picasso</small></u></p>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-		
-		<!-- Sidebar -->
-		<div id="everything" class="container-fluid">
-			<div class="row">
-				<div id="sidebar" class="col-md-2">
-					<div class="sidebar">
-						<ul class="nav nav-pills nav-stacked">
-							<li class="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
-							<li><a data-toggle="pill" href="#settings">Settings</a></li>
-							<li><a data-toggle="pill" href="#register">Become a Tutor</a></li>
-						</ul>
-					</div>
-				</div>
-				
-				<!-- Content -->
-				<div id="content" class="col-md-10">
-					<div class="tab-content">
-						
-						<!-- Tutors -->
-						<div id="tutors" class="tab-pane fade in active">
-							<h3>Search for your Tutor</h3>
-							<div id="custom-search-input">
-								<div class="input-group col-md-10">
-									<input type="text" class="search-query form-control" placeholder="Enter Name of Tutor or Subject">
-									<span class="input-group-btn">
-										<button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
-									</span>
-								</div>
-							</div>
-							<hr>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<div class="col-md-2">
-										<img src="tony.jpg" alt="tutor image" class="img-circle tutorpic">
-									</div>
-									<div class="col-md-3">
-										<h4>Mr Expert the Master of Dirty Gaming</h4>
-										<h5>Available: Mon, Thu, Sat</h5>
-										<h4>420$</h4>
-										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">12</span>
-									</div>
-									<div class="col-md-3">
-										<h5>
-											<ul>
-												<li>Introduccion a las Ciencias Computacionales</li>
-												<li>B</li>
-												<li>C</li>
-												<li>D</li>
-												<li>E</li>
-											</ul>
-										</h5>
-									</div>
-									<div class="col-md-3">
-										<ul>
-											<li>F</li>
-											<li>G</li>
-											<li>H</li>
-											<li>I</li>
-											<li>J</li>
-										</ul>
-									</div>
-								</div>
-								<div class="panel-body">
-									<button type="button" class="btn btn-primary pull-right">Check Profile</button>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<div class="col-md-2">
-										<img src="jose.jpg" alt="tutor image" class="img-circle tutorpic">
-									</div>
-									<div class="col-md-3">
-										<h4>Mr Expert the Master of Dirty Gaming</h4>
-										<h5>Available: Mon, Thu, Sat</h5>
-										<h4>420$</h4>
-										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">12</span>
-									</div>
-									<div class="col-md-3">
-										<h5>
-											<ul>
-												<li>Introduccion a las Ciencias Computacionales</li>
-												<li>B</li>
-												<li>C</li>
-												<li>D</li>
-												<li>E</li>
-											</ul>
-										</h5>
-									</div>
-									<div class="col-md-3">
-										<ul>
-											<li>F</li>
-											<li>G</li>
-											<li>H</li>
-											<li>I</li>
-											<li>J</li>
-										</ul>
-									</div>
-								</div>
-								<div class="panel-body">
-									<button type="button" class="btn btn-primary pull-right">Check Profile</button>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<div class="col-md-2">
-										<img src="tony.jpg" alt="tutor image" class="img-circle tutorpic">
-									</div>
-									<div class="col-md-3">
-										<h4>Mr Expert the Master of Dirty Gaming</h4>
-										<h5>Available: Mon, Thu, Sat</h5>
-										<h4>420$</h4>
-										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">12</span>
-									</div>
-									<div class="col-md-3">
-										<h5>
-											<ul>
-												<li>Introduccion a las Ciencias Computacionales</li>
-												<li>B</li>
-												<li>C</li>
-												<li>D</li>
-												<li>E</li>
-											</ul>
-										</h5>
-									</div>
-									<div class="col-md-3">
-										<ul>
-											<li>F</li>
-											<li>G</li>
-											<li>H</li>
-											<li>I</li>
-											<li>J</li>
-										</ul>
-									</div>
-								</div>
-								<div class="panel-body">
-									<button type="button" class="btn btn-primary pull-right">Check Profile</button>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Settings -->
-						<div id="settings" class="tab-pane fade">
-							<h3>Settings</h3>
-							<form>
-								<div class="form-group">
-									<label for="emailSet">E-Mail</label>
-									<input type="email" class="form-control" id="emailSet" placeholder="user@example.domain"/>
-								</div>
-								<div class="form-group">
-									<label for="telSet">Password</label>
-									<input type="tel" class="form-control" id="telSet" placeholder="XXX-XXX-XXXX"/>
-								</div>
-								<button type="button" class="btn btn-primary">Confirm</button>
-								<button type="button" class="btn btn-default">Cancel</button>
-							</form>
-						</div>
-						
-						<!-- Registration -->
-						<div id="register" class="tab-pane fade">
-							<h3>Register as a Tutor</h3>
-							<p>After finishing this registration process, your name will appear in the Tutors section for all students to see.</p>
-							<hr>
-							<form id="registrationform">
-								<div class="row">
-									<h4><button type="button" class="btn" data-toggle="collapse" data-target="#subjects"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button> Subjects</h4>
-									<div id="subjects" class="collapse in">
-										<p>Choose the subjects you wish to teach. <span class="text-muted">(Maximum of 10)</span></p>
-										<div id=subjectColumns class="row">
-											<div class="col-md-3">
-												<label class="checkbox"><input type="checkbox" value="">Introduccion a las Ciencias Computacionales</label>
-												<label class="checkbox"><input type="checkbox" value="">Programacion Avanzada</label>
-												<label class="checkbox"><input type="checkbox" value="">Matematicas I</label>
-												<label class="checkbox"><input type="checkbox" value="">Cultura</label>
-												<label class="checkbox"><input type="checkbox" value="">Ethics</label>
-												<label class="checkbox"><input type="checkbox" value="">Fak</label>
-											</div>
-											<div class="col-md-3">
-												<label class="checkbox"><input type="checkbox" value="">More Examples For You</label>
-												<label class="checkbox"><input type="checkbox" value="">H</label>
-												<label class="checkbox"><input type="checkbox" value="">I</label>
-												<label class="checkbox"><input type="checkbox" value="">G</label>
-												<label class="checkbox"><input type="checkbox" value="">O</label>
-												<label class="checkbox"><input type="checkbox" value="">S</label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-3"><label class="checkbox" for="showGrades"><input type="checkbox" id="showGrades"> Show your grades for these subjects</label>
-											</div>			
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-3">
-										<label class="input" for="#price">Price (MX Pesos)</label>
-										<div id="priceGroup" class="input-group">
-											<span class="input-group-addon">$</span>
-											<input type="number" min="0" max="999" step="1" id="price" class="form-control" aria-label="Amount">
-											<span class="input-group-addon">.00</span>
-										</div>
-									</div>
-								</div>
-								<hr>
-								<div class="row" style="padding-left:15">
-									<button type="button" class="btn btn-primary">Confirm</button>
-									<button type="button" class="btn btn-default">Cancel</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-	</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Home/Dashboard">
+    <meta name="author" content="TutorFox Foundation">
+    <!--The Small Icon on Browser Tab <link rel="icon" href=""> -->
+    <title>TutorFox - Home</title>
+    <link
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="home.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">TutorFox</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              </ul>
+              <Link to="login"><button onClick={this.handleLogout} type="button" class="btn btn-default navbar-btn navbar-right" href="frontpage.html">
+                Log Out
+              </button></Link>
+              <p id="loginname" class="navbar-right navbar-text"><u><small>Logged in as: Tony de Luna de los Santos Ruiz y Cipriano Luis y Picasso</small></u></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div id="everything" class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-md-2">
+          <div class="sidebar">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
+              <li><a data-toggle="pill" href="#settings">Settings</a></li>
+              <li><a data-toggle="pill" href="#register">Become a Tutor</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Content -->
+        <div id="content" class="col-md-10">
+          <div class="tab-content">
+            
+            <!-- Tutors -->
+            <div id="tutors" class="tab-pane fade in active">
+              <h3>Search for your Tutor</h3>
+              <div id="custom-search-input">
+                <div class="input-group col-md-10">
+                  <input type="text" class="search-query form-control" placeholder="Enter Name of Tutor or Subject">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                  </span>
+                </div>
+              </div>
+              <hr>
+              <!-- panel -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="col-md-2">
+                    <img src="tony.jpg" alt="tutor image" class="img-circle tutorpic">
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Mr Expert the Master of Dirty Gaming</h4>
+                    <h5>Available: Mon, Thu, Sat</h5>
+                    <h4>420$</h4>
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">12</span>
+                  </div>
+                  <div class="col-md-3">
+                    <h5>
+                      <ul>
+                        <li>Introduccion a las Ciencias Computacionales</li>
+                        <li>B</li>
+                        <li>C</li>
+                        <li>D</li>
+                        <li>E</li>
+                      </ul>
+                    </h5>
+                  </div>
+                  <div class="col-md-3">
+                    <ul>
+                      <li>F</li>
+                      <li>G</li>
+                      <li>H</li>
+                      <li>I</li>
+                      <li>J</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <button type="button" class="btn btn-primary pull-right">Check Profile</button>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="col-md-2">
+                    <img src="jose.jpg" alt="tutor image" class="img-circle tutorpic">
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Mr Expert the Master of Dirty Gaming</h4>
+                    <h5>Available: Mon, Thu, Sat</h5>
+                    <h4>420$</h4>
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">12</span>
+                  </div>
+                  <div class="col-md-3">
+                    <h5>
+                      <ul>
+                        <li>Introduccion a las Ciencias Computacionales</li>
+                        <li>B</li>
+                        <li>C</li>
+                        <li>D</li>
+                        <li>E</li>
+                      </ul>
+                    </h5>
+                  </div>
+                  <div class="col-md-3">
+                    <ul>
+                      <li>F</li>
+                      <li>G</li>
+                      <li>H</li>
+                      <li>I</li>
+                      <li>J</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <button type="button" class="btn btn-primary pull-right">Check Profile</button>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="col-md-2">
+                    <img src="tony.jpg" alt="tutor image" class="img-circle tutorpic">
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Mr Expert the Master of Dirty Gaming</h4>
+                    <h5>Available: Mon, Thu, Sat</h5>
+                    <h4>420$</h4>
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">12</span>
+                  </div>
+                  <div class="col-md-3">
+                    <h5>
+                      <ul>
+                        <li>Introduccion a las Ciencias Computacionales</li>
+                        <li>B</li>
+                        <li>C</li>
+                        <li>D</li>
+                        <li>E</li>
+                      </ul>
+                    </h5>
+                  </div>
+                  <div class="col-md-3">
+                    <ul>
+                      <li>F</li>
+                      <li>G</li>
+                      <li>H</li>
+                      <li>I</li>
+                      <li>J</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <button type="button" class="btn btn-primary pull-right">Check Profile</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Settings -->
+            <div id="settings" class="tab-pane fade">
+              <h3>Settings</h3>
+              <form>
+                <div class="form-group">
+                  <label for="emailSet">E-Mail</label>
+                  <input type="email" class="form-control" id="emailSet" placeholder="user@example.domain"/>
+                </div>
+                <div class="form-group">
+                  <label for="telSet">Password</label>
+                  <input type="tel" class="form-control" id="telSet" placeholder="XXX-XXX-XXXX"/>
+                </div>
+                <button type="button" class="btn btn-primary">Confirm</button>
+                <button type="button" class="btn btn-default">Cancel</button>
+              </form>
+            </div>
+            
+            <!-- Registration -->
+            <div id="register" class="tab-pane fade">
+              <h3>Register as a Tutor</h3>
+              <p>After finishing this registration process, your name will appear in the Tutors section for all students to see.</p>
+              <hr>
+              <form id="registrationform">
+                <div class="row">
+                  <h4><button type="button" class="btn" data-toggle="collapse" data-target="#subjects"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button> Subjects</h4>
+                  <div id="subjects" class="collapse in">
+                    <p>Choose the subjects you wish to teach. <span class="text-muted">(Maximum of 10)</span></p>
+                    <div id=subjectColumns class="row">
+                      <div class="col-md-3">
+                        <label class="checkbox"><input type="checkbox" value="">Introduccion a las Ciencias Computacionales</label>
+                        <label class="checkbox"><input type="checkbox" value="">Programacion Avanzada</label>
+                        <label class="checkbox"><input type="checkbox" value="">Matematicas I</label>
+                        <label class="checkbox"><input type="checkbox" value="">Cultura</label>
+                        <label class="checkbox"><input type="checkbox" value="">Ethics</label>
+                        <label class="checkbox"><input type="checkbox" value="">Fak</label>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="checkbox"><input type="checkbox" value="">More Examples For You</label>
+                        <label class="checkbox"><input type="checkbox" value="">H</label>
+                        <label class="checkbox"><input type="checkbox" value="">I</label>
+                        <label class="checkbox"><input type="checkbox" value="">G</label>
+                        <label class="checkbox"><input type="checkbox" value="">O</label>
+                        <label class="checkbox"><input type="checkbox" value="">S</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3"><label class="checkbox" for="showGrades"><input type="checkbox" id="showGrades"> Show your grades for these subjects</label>
+                      </div>      
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label class="input" for="#price">Price (MX Pesos)</label>
+                    <div id="priceGroup" class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="number" min="0" max="999" step="1" id="price" class="form-control" aria-label="Amount">
+                      <span class="input-group-addon">.00</span>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="padding-left:15">
+                  <button type="button" class="btn btn-primary">Confirm</button>
+                  <button type="button" class="btn btn-default">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
 </html>
