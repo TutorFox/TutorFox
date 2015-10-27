@@ -16,10 +16,11 @@ usersRouter.get('/:id/', function(req, res) {
 });
 
 /**************************************************************************************************
- *  Okay, so the post that needs to go in the frontend can contain the following things           *                                     *  - thebody can contain an email containing the new email                                       *
+ *  Okay, so the post that needs to go in the frontend can contain the following things           *                                     *  - the body can contain an email containing the new email (an email is provided by default)    *
  *  - the body can contain number containing the new phone number                                 *
  *  - The body can contain new classes to add, they will be called tutorClasses and they will     *
  *    be optional                                                                                 *
+ *  - Price can be contained in the body                                                          *
  *  - Changed the format of the post a little bit so it's easier to test                          *
  *  - Id is part of the route, it's not a body value                                              *
  *************************************************************************************************/
@@ -30,10 +31,11 @@ usersRouter.post('/:id/', function(req, res) {
       console.log(err);
       return err;
     }
-    // we use, shortcircuit or assignment here.
+    // we used "shortcircuit or" assignment here.
     user.email = req.body.email || user.email;
     user.phoneNumber = req.body.phone || user.phone_number;
     user.tutorClasses = req.body.tutorClasses || user.tutorClasses;
+    user.price = req.body.price || user.price;
     user.save(function(err) {
       if (err) return err;
       res.send(user);

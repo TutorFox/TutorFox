@@ -6,7 +6,8 @@ var User = mongoose.Schema({
   email: String,
   phoneNumber: String,
   classes: [],
-  tutorClasses: []
+  tutorClasses: [],
+  price: Number
 });
 
 module.exports = mongoose.model('User', User);
