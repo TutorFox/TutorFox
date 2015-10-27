@@ -62,7 +62,7 @@ export default class Registration extends React.Component {
       data: {tutorClasses: tutorClasses, price: price},
       dataType: "json",
       success: function(data) {
-        React.findDOMNode(this.refs.price).value = "";
+        location.reload();
       }
     });
   }

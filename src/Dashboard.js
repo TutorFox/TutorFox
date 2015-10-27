@@ -26,7 +26,7 @@ var mainstyle = {
 export var Dashboard = requireAuth(class extends React.Component {
   constructor() {
     super();
-    this.state = {name: "", email : "", classes: [], tutorClasses: []};
+    this.state = {name: "", email : "", phone: "", classes: [], tutorClasses: []};
     this.handleLogout = this.handleLogout.bind(this);
   }
   handleLogout () {
@@ -38,7 +38,7 @@ export var Dashboard = requireAuth(class extends React.Component {
       url: '/users/'+localStorage.user,
       type: 'GET',
       success: function (data) {
-        this.setState({name: data.name, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses});
+        this.setState({name: data.name, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses});
       }.bind(this)
     })
   }
@@ -67,7 +67,7 @@ export var Dashboard = requireAuth(class extends React.Component {
               <div id="content" className="col-md-10">
                 <div className="tab-content">
                   <Tutors />
-                  <Settings email={this.state.email}/>
+                  <Settings tutorClasses={this.state.tutorClasses} email={this.state.email} phone={this.state.phone}/>
                   <Registration  tutorClasses={this.state.tutorClasses} classes={this.state.classes}/>  
                 </div>
               </div>

@@ -28,6 +28,7 @@ export default class Tutors extends React.Component {
       success: function (data) {
         that.setState({tutors: data});
         React.findDOMNode(that.refs.name).value = "";
+        location.reload();
       }
     })
   }
