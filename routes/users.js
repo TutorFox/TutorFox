@@ -4,13 +4,11 @@ var User = require('../models/User');
 
 usersRouter.get('/:id/', function(req, res) {
   var usr = req.params.id;
-  console.log("user getting called");
   User.findOne({user: usr}, function(err, user) {
     if (err) {
       console.log(err);
       return err;
     }
-    console.log(JSON.stringify(user));
     res.send(user);
   });
 });

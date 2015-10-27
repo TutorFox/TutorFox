@@ -33,7 +33,7 @@ export default class Tutors extends React.Component {
   }
   render () {
     const tutorList = this.state.tutors.map(tutor => {
-      return (<TutorPanel name={tutor.name} id={tutor.user} showGrades={true} price="420" classList={tutor.tutorClasses}/>);
+      return (<TutorPanel name={tutor.name} id={tutor.user} showGrades={true} price={tutor.price} classList={tutor.tutorClasses}/>);
     })
     return(
       <div id="tutors" className="tab-pane fade in active">
