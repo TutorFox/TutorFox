@@ -54,11 +54,16 @@ export default class Registration extends React.Component {
       const value = $(this).val();
       tutorClasses.push(that.props.classes[value]);
     });
+
+    const price = React.findDOMNode(this.refs.price).value;
     $.ajax({
       url: 'users/'+localStorage.user,
       type: 'POST',
-      data: {tutorClasses: tutorClasses},
+      data: {tutorClasses: tutorClasses, price: price},
       dataType: "json",
+      success: function(data) {
+        location.reload();
+      }
     });
   }
   render() {
@@ -100,11 +105,15 @@ export default class Registration extends React.Component {
               <label className="input" htmlFor="#price">Price (MX Pesos)</label>
               <div id="priceGroup" className="input-group">
                 <span className="input-group-addon">$</span>
-                <input type="number" min="0" max="999" step="1" id="price" className="form-control" aria-label="Amount"/>
+                <input type="number" min="0" max="999" step="1" id="price" ref="price" className="form-control" aria-label="Amount"/>
                 <span className="input-group-addon">.00</span>
               </div>
-              <button onClick={this.sendRegistration.bind(this)}>send</button>
             </div>
+          </div>
+          <hr/>
+          <div className="row" style={{paddingLeft: 15}}>
+            <button type="button" className="btn btn-primary" onClick={this.sendRegistration.bind(this)}>Confirm</button>
+            <button type="button" className="btn btn-default">Cancel</button>
           </div>
         </form>
       </div>

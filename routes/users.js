@@ -4,13 +4,11 @@ var User = require('../models/User');
 
 usersRouter.get('/:id/', function(req, res) {
   var usr = req.params.id;
-  console.log("user getting called");
   User.findOne({user: usr}, function(err, user) {
     if (err) {
       console.log(err);
       return err;
     }
-    console.log(JSON.stringify(user));
     res.send(user);
   });
 });
@@ -33,9 +31,9 @@ usersRouter.post('/:id/', function(req, res) {
     }
     // we used "shortcircuit or" assignment here.
     user.email = req.body.email || user.email;
-    user.phoneNumber = req.body.phone || user.phone_number;
-    user.tutorClasses = req.body.tutorClasses || user.tutorClasses;
+    user.phone = req.body.phone || user.phone;
     user.price = req.body.price || user.price;
+    user.tutorClasses = req.body.tutorClasses;
     user.save(function(err) {
       if (err) return err;
       res.send(user);
