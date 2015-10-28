@@ -1,7 +1,7 @@
 import requireAuth from './requireAuth';
 import React from 'react';
 import Router from 'react-router';
-let { Link } = Router;
+let { Link, RouteHandler } = Router;
 import auth from './auth';
 import GeneralNavbar from './GeneralNavbar';
 import Settings from './Settings';
@@ -22,8 +22,8 @@ var mainstyle = {
   paddingLeft: '50px',
   paddingTop: '30px'
 }
-
-export var Dashboard = requireAuth(class extends React.Component {
+var Dashboard;
+export default Dashboard = requireAuth(class extends React.Component {
   constructor() {
     super();
     this.state = {name: "", email : "", phone: "", classes: [], tutorClasses: []};
@@ -56,19 +56,21 @@ export var Dashboard = requireAuth(class extends React.Component {
             <div className="row" >
               <div id="sidebar" className="col-md-2">
                 <div className="sidebar">
-                  <ul id="sidebar" className="nav nav-pills nav-stacked" >
-                    <li className="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
-                    <li><a data-toggle="pill" href="#settings">Settings</a></li>
-                    <li><a data-toggle="pill" href="#register">Become a Tutor</a></li>
+                  <ul id="sidebar" className="" >
+                    <li className="active"><Link to="tutors" >Tutors</Link></li>
+                    <li><Link to="settings" >Settings</Link></li>
+                    <li><Link to="register" >Become a Tutor</Link></li>
                   </ul>
                 </div>
               </div>
 
               <div id="content" className="col-md-10">
                 <div className="tab-content">
-                  <Tutors />
-                  <Settings tutorClasses={this.state.tutorClasses} email={this.state.email} phone={this.state.phone}/>
-                  <Registration  tutorClasses={this.state.tutorClasses} classes={this.state.classes}/>  
+                  <RouteHandler 
+                  tutorClasses={this.state.tutorClasses}
+                  email={this.state.email}
+                  phone={this.state.phone}
+                  classes={this.state.classes}/>
                 </div>
               </div>
             </div>
