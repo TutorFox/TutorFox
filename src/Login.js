@@ -50,7 +50,7 @@ export class Login extends React.Component {
                         <div className="carousel-caption">
                           <h1>Welcome to Tutor Fox</h1>
                           <p>TutorFox is an academic matchmaking site for students and tutors at CETYS Universidad Mexicali Campus.</p>
-                          <p> If you're faculty or a student, don't worry. <strong>You're already signed up. </strong> </p>
+                          <p> If you are or were a student, don't worry. <strong>You're already signed up. </strong> </p>
                           <p><a className="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target="#logInModal">Log In Now</a></p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ export class Login extends React.Component {
                 <div className="modal-content">
                     <div className="modal-header">
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 className="modal-title" id="logInModalLabel">Log In with your ID Number and Blackboard Password</h4>
+                        <h4 className="modal-title" id="logInModalLabel">Log In with your CETYS Portal ID number and password</h4>
                     </div>
                     <div className="modal-body">
                         <form onSubmit={this.handleSubmit}>
