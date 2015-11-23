@@ -48,6 +48,7 @@ export var Dashboard = requireAuth(class extends React.Component {
     });
     return (
         <div>
+    <link href="home.css" type="text/css" rel="stylesheet"/>
           <div className="row">
             <GeneralNavbar loggedIn={true} name={this.state.name} handleClick={this.handleLogout} />
           </div>

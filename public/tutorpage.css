@@ -1,0 +1,41 @@
+
+#everything {
+	background-image: url(noisy_net.png);
+	color: antiquewhite;
+	padding-top: 51px;
+	padding-left: 31px;
+	padding-right: 31px;
+}
+
+.panel-footer {
+	height: 51px;
+	background-color: goldenrod;
+}
+
+img {
+	max-height: 200px;
+	max-width: 200px;
+}
+
+.panel-header {
+	height: 51px;
+}
+
+#brand {
+	padding-bottom: 12px;
+	padding-right: 32px;
+	max-height: 43px;
+	max-width: 300px;
+}
+
+.panel {
+	color: black;
+}
+
+.btn-group {
+	padding-left: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
