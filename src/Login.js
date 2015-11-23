@@ -38,6 +38,7 @@ export class Login extends React.Component {
   render () {
     return (
       <div>
+    <link href="frontpage.css" type="text/css" rel="stylesheet"/>
     <GeneralNavbar handleClick={this.displayLoginModal} loggedIn={false}/> 
         <div id="frontCarousel" className="carousel slide" data-ride="carousel">
             <ol className="carousel-indicators">

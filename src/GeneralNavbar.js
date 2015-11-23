@@ -13,7 +13,7 @@ export default class GeneralNavbar extends React.Component {
     return (
       <div className="navbar-wrapper">
         <div className="container">
-          <nav className="navbar navbar-inverse navbar-fixed-top">
+          <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container">
               <div className="navbar-header">
                 <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -22,7 +22,7 @@ export default class GeneralNavbar extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="#">TutorFox</a>
+                <a className="navbar-brand" href="#"><img src="tutorfoxsideways.png" id="brand"/></a>
               </div>
               <div id="navbar" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav">
@@ -35,7 +35,7 @@ export default class GeneralNavbar extends React.Component {
                     {this.props.loggedIn?'Log out':' Log in'}
                   </button> 
                 </Link>
-                {this.props.loggedIn?name:''};
+                {this.props.loggedIn?name:''}
               </div>
             </div>
           </nav>

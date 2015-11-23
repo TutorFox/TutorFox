@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Front page">
+    <meta name="author" content="TutorFox Foundation">
+    <link rel="icon" href="/tutorfoxtextless.png">
+    <title>TF - Mr. Expert the Master of Dirty Gaming</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="tutorpage.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="tutorfoxsideways.png" id="brand"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              </ul>
+              <Link to="login"><button onClick={this.handleLogout} type="button" class="btn btn-default navbar-btn navbar-right" href="frontpage.html">
+                Log Out
+              </button></Link>
+              <p id="loginname" class="navbar-right navbar-text"><u><small>Logged in as: Tony de Luna de los Santos Ruiz y Cipriano Luis y Picasso</small></u></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Tutor Info Panel -->
+    <div class="container-fluid" id="everything">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-header">
+            <center><h2>Mr Expert the Master of Dirty Gaming</h2></center>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="tony.jpg" alt="tutor image" class="img-circle tutorpic">
+              </div>
+              <div class="col-md-3">
+                <h5>Available: Mon, Thu, Sat</h5>
+                <h4>420$</h4>
+                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42</button> <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>12</button>
+              </div>
+              <div class="col-md-3">
+                <h5>
+                  <ul>
+                    <li>Introduccion a las Ciencias Computacionales</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                  </ul>
+                </h5>
+              </div>
+              <div class="col-md-3">
+                <ul>
+                  <li>F</li>
+                  <li>G</li>
+                  <li>H</li>
+                  <li>I</li>
+                  <li>J</li>
+                </ul>
+              </div>
+            </div>
+            <h4 style="text-indent: 1em;">About Me</h4>
+            <p>Gamer dudes, dudettes. When it comes to keeping your gaming gear at peak performance; oh the games people play. I'll tell ya, really. A lot of you game assassins seem to think that skill alone will get you to the victory lane, as you go leaping from level to level, room to room, and world to world; with little or no effort. Oh, planet rangers! Do you want to know a dirty little secret? Yeah-Huh? Do ya? Do ya? Go to www.dust-off.com/dirtygaming to learn more.</p>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#requestModal">Request Tutor</button>
+          </div>
+        </div>
+      </div>
+        <h3 style="text-indent: 1em;">Write your Review for this Tutor</h3>
+      <form>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>  
+        </div>
+        <textarea class="form-control" rows="5" placeholder="Write a review."></textarea>
+        <div class="btn-group" role="group"><button type="button" class="btn btn-primary" id="submitreview">Submit</button></div>
+      </form>
+
+      <!-- Reviews -->
+      <h3 style="text-indent: 1em;">Reviews</h3>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h4 class="panel-title"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Juan Perez</h4>
+        </div>
+        <div class="panel-body">
+          <p>Fue una buena sesion me agrado su forma de ensenar.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h4 class="panel-title"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Pariente-Kun</h4>
+        </div>
+        <div class="panel-body">
+          <p>Le voy a dar un levanton con toda la plebada a este tutor, malisimo el hijo de la chingada.</p>
+        </div>
+      </div>  
+    </div>
+    
+    <!-- Review Creation -->
+    
+    
+    
+    <!-- Tutor Request Modal Dialog 
+    <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLaber">
+      <div class="modal-dialog modal-sm" role="dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="logInModalLabel">Request this Tutor</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <div class="btn-group" id="subjectchoose">
+                  <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Select a Subject<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Matematicas</a></li>
+                      <li><a href="#">Metodos de Programacion Avanzada</a></li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Request</button>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    
+    <!-- Bootstrap jS Core -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
