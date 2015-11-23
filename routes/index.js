@@ -10,6 +10,6 @@ var requests = require('./tutorRequest');
 router.post('/login', auth);
 router.use('/users', userRouter);
 router.get('/tutors', search);
-router.use('/request',requests);
+router.use('/request', requests);
 
 module.exports = router;
