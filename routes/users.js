@@ -27,6 +27,7 @@ usersRouter.get('/:id/public', function(req,res){
     response.email = user.email;
     response.tutorClasses = user.tutorClasses;
     response.price = user.price;
+    response.aboutMe = user.aboutMe;
     res.send(response);
   });
 });
@@ -70,6 +71,25 @@ usersRouter.post('/:id/classes', function(req,res){
     //using shortcircuit again here.
     user.price = req.body.price || user.price;
     user.tutorClasses = req.body.tutorClasses;
+    user.save(function(err){
+      if(err) return err;
+      res.send(user);
+    });
+  });
+});
+
+/******************************************************************************************
+* id about me will contain as a param the id of the user that's making the POST           *
+* it will contain a body that will contain a string called aboutMe                        *
+******************************************************************************************/
+
+usersRouter.post('/:id/aboutme', function(req, res){
+  User.find({user: req.params.id}, function(err, user){
+    if(err){
+      console.log(err);
+      return err;
+    }
+    user.aboutMe = req.body.aboutMe;
     user.save(function(err){
       if(err) return err;
       res.send(user);

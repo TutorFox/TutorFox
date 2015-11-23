@@ -8,7 +8,8 @@ var User = mongoose.Schema({
   classes: [],
   tutorClasses: [],
   price: Number,
-  requests: []
+  requests: [],
+  aboutMe: String
 });
 
 module.exports = mongoose.model('User', User);
