@@ -3,13 +3,27 @@ import requireAuth from './requireAuth';
 import React from 'react';
 import Router from 'react-router';
 import auth from './auth';
+import Comment from './Comment';
 let { Link } = Router;
 
 export var TutorPage = requireAuth(class extends React.Component {
 
   constructor() {
     super();
-    this.state = {selected: "choose a subject", name: "", email : "", price: "", phone: "", classes: [], tutorClasses: []};
+    this.state = {
+      selected: "choose a subject",
+      name: "",
+      tutorName: "",
+      email : "",
+      price: "",
+      phone: "",
+      classes: [],
+      tutorClasses: [],
+      reviews: [],
+      likes: [],
+      dislikes: []
+    };
+
     this.handlelogout = this.handlelogout.bind(this);
   }
 
@@ -18,18 +32,63 @@ export var TutorPage = requireAuth(class extends React.Component {
   }
 
   componentDidMount(){
+    this.reloadData();
+    $.ajax({
+      url: '/users/'+localStorage.user,
+      type: 'GET',
+      success: function (data) {
+        this.setState({
+          name: data.name,
+        });
+      }.bind(this)
+    })
+  }
+
+  reloadData() {
     $.ajax({
       url: '/users/'+this.props.params.id,
       type: 'GET',
       success: function (data) {
-        alert(data);
-        this.setState({name: data.name, price: data.price, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses});
+        this.setState({
+          tutorName: data.name,
+          price: data.price,
+          phone: data.phone,
+          email: data.email,
+          classes: data.classes,
+          tutorClasses: data.tutorClasses,
+          reviews : data.reviews,
+          likes : data.likes,
+          dislikes: data.dislikes
+        });
       }.bind(this)
     })
   }
 
   handleClick(e) {
     this.setState({selected: e.target.innerHTML});
+  }
+
+  sendLike(value) {
+    var that = this;
+    $.ajax({
+      url: 'like/' + this.props.params.id,
+      type: 'POST',
+      data: {user: localStorage.user, vote: value},
+      dataType: 'json',
+      success: function() {
+        that.reloadData();
+      }
+    })
+  }
+
+  handleLike(e) {
+    if(e.target.classList.contains("up")) {
+      this.sendLike(1);
+    }
+
+    if(e.target.classList.contains("down")) {
+      this.sendLike(-1);
+    }
   }
 
   onButtonClick(e) {
@@ -45,6 +104,24 @@ export var TutorPage = requireAuth(class extends React.Component {
     })
   }
 
+  handleComment(e) {
+    alert('button comment');
+    let comment = React.findDOMNode(this.refs.comment).value;
+    let that = this;
+    $.ajax({
+      url: 'review/' + this.props.params.id,
+      type: 'POST',
+      data: {user: localStorage.user, comment: comment.trim()},
+      dataType: 'json',
+      success: function() {
+        alert('comment sent');
+        React.findDOMNode(that.refs.comment).value = " ";
+        that.reloadData();
+      }
+    })
+    
+  }
+
   render () { 
     const left = this.state.tutorClasses.slice(0,5).map(course => {
       return(<li>{course.name}{this.props.showGrades?": "+course.grade:""}</li>);
@@ -52,11 +129,15 @@ export var TutorPage = requireAuth(class extends React.Component {
     const right = this.state.tutorClasses.slice(5).map(course => {
       return(<li>{course.name}{this.props.showGrades?": "+course.grade:""}</li>);
     })
-
+  
     const dropdown = this.state.tutorClasses.map(course => {
       return (<li><a  data-value = {course.name} onClick={this.handleClick.bind(this)}>{course.name}</a></li> )
     })
     var imgsrc = "http://micampus.mxl.cetys.mx/fotos/"+(this.props.params.id.substr(1))+".jpg";
+
+    const comments = this.state.reviews.map(review => {
+      return (<Comment comment={review.comment} user={review.id} like={this.state.likes.indexOf(review.id) !== -1} dislike={this.state.dislikes.indexOf(review.id) !== -1}/>)
+    })
     return (
         <div>
           <link href="tutorpage.css" type="text/css" rel="stylesheet"/>
@@ -67,7 +148,7 @@ export var TutorPage = requireAuth(class extends React.Component {
             <div className="row">
               <div className="panel panel-default">
                 <div className="panel-header">
-                  <center><h2>{this.state.name}</h2></center>
+                  <center><h2>{this.state.tutorName}</h2></center>
                 </div>
                 <div className="panel-body">
                   <div className="row">
@@ -77,7 +158,8 @@ export var TutorPage = requireAuth(class extends React.Component {
                     <div className="col-md-3">
                       <h5>Available: Mon, Thu, Sat</h5>
                       <h4>{this.state.price}$</h4>
-                      <button type="button" className="btn btn-success"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>42</button> <button type="button" className="btn btn-danger"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>12</button>
+                      <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{this.state.likes.length}</button> 
+                      <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>{this.state.dislikes.length}</button>
                     </div>
                     <div className="col-md-3">
                       <h5>
@@ -102,10 +184,11 @@ export var TutorPage = requireAuth(class extends React.Component {
             <h3 style={{textIndent: 1 +'em'}}>Write your Review for this Tutor</h3>
             <form>
               <div className="btn-group" role="group">
-                <button type="button" className="btn btn-success"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> <button type="button" className="btn btn-danger"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>  
+                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> 
+                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>  
               </div>
-              <textarea className="form-control" rows="5" placeholder="Write a review."></textarea>
-              <div className="btn-group" role="group"><button type="button" className="btn btn-primary" id="submitreview">Submit</button></div>
+              <textarea ref="comment" className="form-control" rows="5" placeholder="Write a review."></textarea>
+              <div className="btn-group" onClick={this.handleComment.bind(this)} role="group"><button type="button" className="btn btn-primary" id="submitreview">Submit</button></div>
             </form>
             <h3 style={{textIndent: 1 +'em'}}>Reviews</h3>
 
@@ -125,6 +208,7 @@ export var TutorPage = requireAuth(class extends React.Component {
                 <p>Le voy a dar un levanton con toda la plebada a este tutor, malisimo el hijo de la chingada.</p>
               </div>
             </div>  
+            {comments}
 
 
           </div>

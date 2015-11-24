@@ -15,13 +15,25 @@ var likes = function(req, res){
       console.log(err);
       return err;
     }
-    if(user.likes.indexOf(req.body.user) == 1 || user.dislikes.indexOf(req.body.user) == 1)
-      res.send(-1);
-    else {
-      if(req.params.body.vote == 1){user.likes.push(req.body.user)}
-      if(req.params.body.vote == -1){user.dislikes.push(req.body.user)}
-      res.send(user);
+    if(req.body.vote === '1' && user.likes.indexOf(req.body.user) === -1) {
+      user.likes.push(req.body.user);
+      var index = user.dislikes.indexOf(req.body.user);
+      if(index !== -1) {
+        user.dislikes.splice(index, 1);
+      }
+      user.save();
     }
+    if(req.body.vote === '-1' && user.dislikes.indexOf(req.body.user) === -1) {
+      user.dislikes.push(req.body.user);
+      var index = user.likes.indexOf(req.body.user);
+      if(index !== -1) {
+        user.likes.splice(index, 1);
+      }
+      user.save();
+    }
+    console.log("likes: " + JSON.stringify(user.likes));
+    console.log("dislikes: " + JSON.stringify(user.dislikes));
+    res.send(user);
   });
 }
 module.exports = likes;

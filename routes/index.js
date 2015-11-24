@@ -14,6 +14,6 @@ router.use('/users', userRouter);
 router.get('/tutors', search);
 router.use('/request', requests);
 router.post('/review/:id', review);
-router.post('/review/:id',likes);
+router.post('/like/:id', likes);
 
 module.exports = router;
