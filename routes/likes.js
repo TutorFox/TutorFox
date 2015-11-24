@@ -15,7 +15,7 @@ var likes = function(req, res){
       console.log(err);
       return err;
     }
-    if(user.likes.indexOf(req.body.user)  == 1 && user.dislikes.indexOf(req.body.user) == 1)
+    if(user.likes.indexOf(req.body.user) == 1 || user.dislikes.indexOf(req.body.user) == 1)
       res.send(-1);
     else {
       if(req.params.body.vote == 1){user.likes.push(req.body.user)}
