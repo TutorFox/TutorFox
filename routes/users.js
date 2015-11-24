@@ -28,6 +28,7 @@ usersRouter.get('/:id/public', function(req,res){
     response.tutorClasses = user.tutorClasses;
     response.price = user.price;
     response.aboutMe = user.aboutMe;
+    response.reviews = user.reviews;
     res.send(response);
   });
 });
