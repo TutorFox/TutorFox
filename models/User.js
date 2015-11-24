@@ -10,7 +10,9 @@ var User = mongoose.Schema({
   price: Number,
   requests: [],
   aboutMe: String,
-  reviews: []
+  reviews: [],
+  likes: [],
+  dislikes: [],
 });
 
 module.exports = mongoose.model('User', User);
