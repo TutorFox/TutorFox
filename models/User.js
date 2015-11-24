@@ -9,7 +9,10 @@ var User = mongoose.Schema({
   tutorClasses: [],
   price: Number,
   requests: [],
-  aboutMe: String
+  aboutMe: String,
+  reviews: [],
+  likes: [],
+  dislikes: [],
 });
 
 module.exports = mongoose.model('User', User);
