@@ -10,7 +10,7 @@ var User = require('../models/User');
 *   - comment which is a string with the actual content of the review                                    *
 **********************************************************************************************************/
 
-var search = function(req,res){
+var review = function(req,res){
   User.findOne({user: req.params.id}, function(err, user){
     if (err){
       console.log(err);
@@ -26,3 +26,4 @@ var search = function(req,res){
     });
   });
 }
+module.exports = review;
