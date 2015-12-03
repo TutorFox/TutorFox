@@ -7,6 +7,7 @@ import GeneralNavbar from './GeneralNavbar';
 import Settings from './Settings';
 import Registration from './Registration';
 import Tutors from './Tutors';
+import Requests from './Requests';
 
 var rowstyle = {
   paddingTop: '30px'
@@ -26,7 +27,7 @@ var mainstyle = {
 export var Dashboard = requireAuth(class extends React.Component {
   constructor() {
     super();
-    this.state = {name: "", email : "", phone: "", classes: [], tutorClasses: []};
+    this.state = {name: "", email : "", phone: "", classes: [], tutorClasses: [], requests: []};
     this.handleLogout = this.handleLogout.bind(this);
   }
   handleLogout () {
@@ -38,7 +39,7 @@ export var Dashboard = requireAuth(class extends React.Component {
       url: '/users/'+localStorage.user,
       type: 'GET',
       success: function (data) {
-        this.setState({name: data.name, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses});
+        this.setState({name: data.name, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses, requests: data.requests});
       }.bind(this)
     })
   }
@@ -46,9 +47,11 @@ export var Dashboard = requireAuth(class extends React.Component {
     const classes = this.state.classes.map(course => {
       return (<li>{course.name} {course.grade}</li>);
     });
+
+    const requests = this.state.tutorClasses.length !== 0 ? <li><a data-toggle="pill" href="#requests">Requests</a></li> : null;
     return (
         <div>
-    <link href="home.css" type="text/css" rel="stylesheet"/>
+          <link href="home.css" type="text/css" rel="stylesheet"/>
           <div className="row">
             <GeneralNavbar loggedIn={true} name={this.state.name} handleClick={this.handleLogout} />
           </div>
@@ -60,7 +63,8 @@ export var Dashboard = requireAuth(class extends React.Component {
                   <ul id="sidebar" className="nav nav-pills nav-stacked" >
                     <li className="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
                     <li><a data-toggle="pill" href="#settings">Settings</a></li>
-                    <li><a data-toggle="pill" href="#register">Become a Tutor</a></li>
+                    <li><a data-toggle="pill" href="#register">{this.state.tutorClasses.length === 0? "Become a Tutor" : "Tutor Settings"}</a></li>
+                    {requests}
                   </ul>
                 </div>
               </div>
@@ -70,6 +74,7 @@ export var Dashboard = requireAuth(class extends React.Component {
                   <Tutors />
                   <Settings tutorClasses={this.state.tutorClasses} email={this.state.email} phone={this.state.phone}/>
                   <Registration  tutorClasses={this.state.tutorClasses} classes={this.state.classes}/>  
+                  <Requests requests={this.state.requests}/>
                 </div>
               </div>
             </div>

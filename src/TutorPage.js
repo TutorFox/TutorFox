@@ -192,22 +192,6 @@ export var TutorPage = requireAuth(class extends React.Component {
             </form>
             <h3 style={{textIndent: 1 +'em'}}>Reviews</h3>
 
-            <div className="panel panel-success">
-              <div className="panel-heading">
-                <h4 className="panel-title"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Juan Perez</h4>
-              </div>
-              <div className="panel-body">
-                <p>Fue una buena sesion me agrado su forma de ensenar.</p>
-              </div>
-            </div>
-            <div className="panel panel-danger">
-              <div className="panel-heading">
-                <h4 className="panel-title"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Pariente-Kun</h4>
-              </div>
-              <div className="panel-body">
-                <p>Le voy a dar un levanton con toda la plebada a este tutor, malisimo el hijo de la chingada.</p>
-              </div>
-            </div>  
             {comments}
 
 
