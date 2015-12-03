@@ -67,17 +67,17 @@ usersRouter.post('/general/:id', function(req, res) {
 
 usersRouter.post('/classes/:id', function(req,res){
   console.log(req.params.id);
-  User.find({user: req.params.id}, function(err,user){
-    usr = user[0];
+  User.findOne({user: req.params.id}, function(err,user){
+    user
     if(err){
       console.log(err);
       return err;
     }
     //using shortcircuit again here.
     console.log(req.body.tutorClasses);
-    usr.price = req.body.price || user.price;
-    usr.tutorClasses = req.body.tutorClasses;
-    usr.save(function(err){
+    user.price = req.body.price || user.price;
+    user.tutorClasses = req.body.tutorClasses;
+    user.save(function(err){
       if(err){
         return err;
       }
