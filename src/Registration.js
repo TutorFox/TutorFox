@@ -57,7 +57,7 @@ export default class Registration extends React.Component {
 
     const price = React.findDOMNode(this.refs.price).value;
     $.ajax({
-      url: 'users/'+localStorage.user,
+      url: 'users/classes/'+localStorage.user,
       type: 'POST',
       data: {tutorClasses: tutorClasses, price: price},
       dataType: "json",

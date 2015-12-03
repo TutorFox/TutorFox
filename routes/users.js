@@ -43,7 +43,7 @@ usersRouter.get('/:id/public', function(req,res){
  *  - Id is part of the route, it's not a body value                                              *
  *************************************************************************************************/
 
-usersRouter.post('/:id/', function(req, res) {
+usersRouter.post('/general/:id', function(req, res) {
   User.findOne({user: req.params.id}, function(err, user) {
     if (err) {
       console.log(err);
@@ -65,17 +65,22 @@ usersRouter.post('/:id/', function(req, res) {
 *   -ID is part of the route, it's not a body value                                                 *
 ****************************************************************************************************/
 
-usersRouter.post('/:id/classes', function(req,res){
+usersRouter.post('/classes/:id', function(req,res){
+  console.log(req.params.id);
   User.find({user: req.params.id}, function(err,user){
+    usr = user[0];
     if(err){
       console.log(err);
       return err;
     }
     //using shortcircuit again here.
-    user.price = req.body.price || user.price;
-    user.tutorClasses = req.body.tutorClasses;
-    user.save(function(err){
-      if(err) return err;
+    console.log(req.body.tutorClasses);
+    usr.price = req.body.price || user.price;
+    usr.tutorClasses = req.body.tutorClasses;
+    usr.save(function(err){
+      if(err){
+        return err;
+      }
       res.send(user);
     });
   });
@@ -86,7 +91,7 @@ usersRouter.post('/:id/classes', function(req,res){
 * it will contain a body that will contain a string called aboutMe                        *
 ******************************************************************************************/
 
-usersRouter.post('/:id/aboutme', function(req, res){
+usersRouter.post('/aboutme/:id', function(req, res){
   User.find({user: req.params.id}, function(err, user){
     if(err){
       console.log(err);
