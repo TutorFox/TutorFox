@@ -59,7 +59,7 @@ export default class Registration extends React.Component {
     $.ajax({
       url: 'users/classes/'+localStorage.user,
       type: 'POST',
-      data: {tutorClasses: tutorClasses, price: price},
+      data: {tutorClasses: tutorClasses, price: price, showGrades: showGrades},
       dataType: "json",
       success: function(data) {
         location.reload();

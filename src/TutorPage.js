@@ -21,7 +21,8 @@ export var TutorPage = requireAuth(class extends React.Component {
       tutorClasses: [],
       reviews: [],
       likes: [],
-      dislikes: []
+      dislikes: [],
+      showGrades: true,
     };
 
     this.handlelogout = this.handlelogout.bind(this);
@@ -58,7 +59,8 @@ export var TutorPage = requireAuth(class extends React.Component {
           tutorClasses: data.tutorClasses,
           reviews : data.reviews,
           likes : data.likes,
-          dislikes: data.dislikes
+          dislikes: data.dislikes,
+          showGrades: data.showGrades
         });
       }.bind(this)
     })
@@ -119,17 +121,17 @@ export var TutorPage = requireAuth(class extends React.Component {
         that.reloadData();
       }
     })
-    
+
   }
 
-  render () { 
+  render () {
     const left = this.state.tutorClasses.slice(0,5).map(course => {
-      return(<li>{course.name}{this.props.showGrades?": "+course.grade:""}</li>);
+      return(<li>{course.name}{this.state.showGrades?": "+course.grade:""}</li>);
     })
     const right = this.state.tutorClasses.slice(5).map(course => {
-      return(<li>{course.name}{this.props.showGrades?": "+course.grade:""}</li>);
+      return(<li>{course.name}{this.state.showGrades?": "+course.grade:""}</li>);
     })
-  
+
     const dropdown = this.state.tutorClasses.map(course => {
       return (<li><a  data-value = {course.name} onClick={this.handleClick.bind(this)}>{course.name}</a></li> )
     })
@@ -158,7 +160,7 @@ export var TutorPage = requireAuth(class extends React.Component {
                     <div className="col-md-3">
                       <h5>Available: Mon, Thu, Sat</h5>
                       <h4>{this.state.price}$</h4>
-                      <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{this.state.likes.length}</button> 
+                      <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{this.state.likes.length}</button>
                       <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>{this.state.dislikes.length}</button>
                     </div>
                     <div className="col-md-3">
@@ -184,8 +186,8 @@ export var TutorPage = requireAuth(class extends React.Component {
             <h3 style={{textIndent: 1 +'em'}}>Write your Review for this Tutor</h3>
             <form>
               <div className="btn-group" role="group">
-                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> 
-                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>  
+                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
               </div>
               <textarea ref="comment" className="form-control" rows="5" placeholder="Write a review."></textarea>
               <div className="btn-group" onClick={this.handleComment.bind(this)} role="group"><button type="button" className="btn btn-primary" id="submitreview">Submit</button></div>
