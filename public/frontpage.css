@@ -2,3 +2,10 @@
 .carousel-caption {
 	background: rgba(0,0,0,0.5);
 }
+
+#brand {
+	padding-bottom: 12px;
+	padding-right: 32px;
+	max-height: 43px;
+	max-width: 300px;
+}

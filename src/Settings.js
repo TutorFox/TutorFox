@@ -17,9 +17,9 @@ export default class Settings extends React.Component {
     const phone = React.findDOMNode(this.refs.phone).value.trim();
     const that = this;
     $.ajax({
-      url: 'users/'+localStorage.user,
+      url: 'users/general/'+localStorage.user,
       type: 'POST',
-      data: {email: email, phone: phone, tutorClasses: that.props.tutorClasses},
+      data: {email: email, phone: phone}, //tutorClasses: that.props.tutorClasses},
       dataType: "json",
       success: function () {
         location.reload();
@@ -42,7 +42,7 @@ export default class Settings extends React.Component {
           <button type="button" className="btn btn-primary" onClick={this.handleClick.bind(this)}>Confirm</button>
 	  <button type="button" className="btn btn-default">Cancel</button>
 	</form>
-      </div>	
+      </div>
 
     );
   }

@@ -21,7 +21,7 @@
 
 .panel {
 	width: 1000px;
-        background-color: gold;
+        color: black;
 }
 
 .panel-heading {
@@ -74,3 +74,15 @@
 .search-query:focus + button {
 	z-index: 3;   
 }
+
+#brand {
+	padding-bottom: 12px;
+	padding-right: 32px;
+	max-height: 43px;
+	max-width: 300px;
+}
+
+.closebtn {
+	padding-right: 10px;
+}
+

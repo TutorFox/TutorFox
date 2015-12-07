@@ -1,18 +1,10 @@
 import React from 'react';
+import Router from 'react-router';
+let {Link } = Router;
 
 export default class TutorPanel extends React.Component {
 
   onButtonClick(e) {
-    alert('button clicked' + this.props.id);
-    $.ajax({
-      url: 'request/' + this.props.id,
-      type: 'POST',
-      data: {localUser:{user: localStorage.user, course: "MATEMATICAS"}},
-      dataType: 'json',
-      success: function() {
-        alert('tutor notified');
-      }
-    })
   }
 
   render () {
@@ -49,7 +41,7 @@ export default class TutorPanel extends React.Component {
           </div>
         </div>
         <div className="panel-body">
-          <button type="button" className="btn btn-primary pull-right" onClick={this.onButtonClick.bind(this)}>Request Tutor</button>
+         <Link to={"/" + this.props.id}><button type="button" className="btn btn-primary pull-right" onClick={this.onButtonClick.bind(this)}>See profile</button></Link>
         </div>
       </div>
     );
