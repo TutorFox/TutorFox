@@ -114,7 +114,6 @@ export var TutorPage = requireAuth(class extends React.Component {
       data: {user: localStorage.user, comment: comment.trim()},
       dataType: 'json',
       success: function() {
-        alert('comment sent');
         React.findDOMNode(that.refs.comment).value = " ";
         that.reloadData();
       }
