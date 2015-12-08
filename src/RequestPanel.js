@@ -21,7 +21,7 @@ export default class RequestPanel extends React.Component {
     return (
       <div className="panel panel-default">
         <div className="panel-header">
-          <button type="button" className="close " aria-label="Close"><span aria-hidden="true" className="closebtn">&times;</span></button>
+          <button onClick={this.props.deleteRequest} type="button" className="close " aria-label="Close"><span aria-hidden="true" className="closebtn">&times;</span></button>
           <h4>{this.state.reqName}</h4>
         </div>
         <div className="panel-body">

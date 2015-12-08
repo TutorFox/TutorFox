@@ -43,6 +43,20 @@ export var Dashboard = requireAuth(class extends React.Component {
       }.bind(this)
     })
   }
+
+  deleteRequest(i) {
+    let requests = this.state.requests.slice();
+    requests.splice(i,1)
+    $.ajax({
+      url: 'request/all/' + localStorage.user  ,
+      type: 'POST',
+      data: {requests: requests},
+      dataType: 'json',
+      success: function(requests) {
+        this.setState({requests: requests});
+      }.bind(this)
+    })
+  }
   render () {
     const classes = this.state.classes.map(course => {
       return (<li>{course.name} {course.grade}</li>);
@@ -74,7 +88,7 @@ export var Dashboard = requireAuth(class extends React.Component {
                   <Tutors />
                   <Settings tutorClasses={this.state.tutorClasses} email={this.state.email} phone={this.state.phone}/>
                   <Registration tutorClasses={this.state.tutorClasses} classes={this.state.classes} price={this.state.price} showGrades={this.state.showGrades}/>
-                  <Requests requests={this.state.requests}/>
+                  <Requests requests={this.state.requests} deleteRequest={this.deleteRequest.bind(this)}/>
                 </div>
               </div>
             </div>
