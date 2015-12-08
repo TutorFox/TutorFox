@@ -94,7 +94,6 @@ export var TutorPage = requireAuth(class extends React.Component {
   }
 
   onButtonClick(e) {
-    alert('button clicked' + this.props.id);
     $.ajax({
       url: 'request/' + this.props.params.id,
       type: 'POST',
@@ -107,7 +106,6 @@ export var TutorPage = requireAuth(class extends React.Component {
   }
 
   handleComment(e) {
-    alert('button comment');
     let comment = React.findDOMNode(this.refs.comment).value;
     let that = this;
     $.ajax({
