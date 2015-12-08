@@ -9,7 +9,7 @@ var search = function(req,res){
     if(err){
       return err;
     }
-    tutors.sort((a, b) => {return b.likes.length - a.likes.length});
+    tutors.sort(function(a, b) {return b.likes.length - a.likes.length});
     res.send(tutors);
   });
 }
