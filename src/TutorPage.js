@@ -99,7 +99,7 @@ export var TutorPage = requireAuth(class extends React.Component {
     $.ajax({
       url: 'request/' + this.props.params.id,
       type: 'POST',
-      data: {localUser:{user: localStorage.user, course: this.state.selected }},
+      data: {localUser:{user: localStorage.user, course: this.state.selected, seen: false }},
       dataType: 'json',
       success: function() {
         alert('tutor notified');
