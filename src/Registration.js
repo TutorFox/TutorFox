@@ -123,9 +123,9 @@ export default class Registration extends React.Component {
             <div className="col-md-3">
               <label className="input" htmlFor="#aboutMe"> About Me </label>
               <div id="aboutMeGroup" className="input-group">
-                  <input type="text" id="aboutMe" ref="aboutMe" placeholder="hello, I'm here to tutor you" className="form-control"/>
+                  <textarea rows="5" style={{width: 500 +'px'}} type="text" id="aboutMe" ref="aboutMe" placeholder="hello, I'm here to tutor you" className="form-control"/>
               </div>
-            </div>
+						</div>
           </div>
           <hr/>
           <div className="row" style={{paddingLeft: 15}}>

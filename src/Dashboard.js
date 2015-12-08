@@ -104,7 +104,7 @@ export var Dashboard = requireAuth(class extends React.Component {
             <div className="row" >
               <div id="sidebar" className="col-md-2">
                 <div className="sidebar">
-                  <ul id="sidebar" className="nav nav-pills nav-stacked" >
+                  <ul className="nav nav-pills nav-stacked affix" >
                     <li className="active"><a data-toggle="pill" href="#tutors">Tutors</a></li>
                     <li><a data-toggle="pill" href="#settings">Settings</a></li>
                     <li><a data-toggle="pill" href="#register">{this.state.tutorClasses.length === 0? "Become a Tutor" : "Tutor Settings"}</a></li>
