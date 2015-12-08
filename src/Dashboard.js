@@ -42,6 +42,18 @@ export var Dashboard = requireAuth(class extends React.Component {
         this.setState({name: data.name, price: data.price, showGrades: data.showGrades, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses, requests: data.requests});
       }.bind(this)
     })
+    setInterval(this.checkUpdates.bind(this), 5000);
+  }
+
+  checkUpdates() {
+    $.ajax({
+      url: '/users/'+localStorage.user,
+      type: 'GET',
+      success: function (data) {
+        this.setState({requests: data.requests});
+      }.bind(this)
+    })
+
   }
 
   deleteRequest(i) {
@@ -57,12 +69,30 @@ export var Dashboard = requireAuth(class extends React.Component {
       }.bind(this)
     })
   }
+
+  markAsSeen() {
+    let requests = this.state.requests.slice();
+    for (let request of requests ) {
+      request.seen = 'true';
+    }
+    if(requests.length > 0)
+    $.ajax({
+      url: 'request/all/' + localStorage.user  ,
+      type: 'POST',
+      data: {requests: requests},
+      dataType: 'json',
+      success: function(requests) {
+        this.setState({requests: requests});
+      }.bind(this)
+    })
+  }
   render () {
     const classes = this.state.classes.map(course => {
       return (<li>{course.name} {course.grade}</li>);
     });
 
-    const requests = this.state.tutorClasses.length !== 0 ? <li><a data-toggle="pill" href="#requests">Requests</a></li> : null;
+    let unseenCount = this.state.requests.filter(req => { return req.seen === 'false' }).length;
+    const requests = this.state.tutorClasses.length !== 0 ? <li><a onClick = {this.markAsSeen.bind(this)} data-toggle="pill" href="#requests">Requests{unseenCount > 0? <span className="badge">{unseenCount}</span> : null}</a></li> : null;
     return (
         <div>
           <link href="home.css" type="text/css" rel="stylesheet"/>

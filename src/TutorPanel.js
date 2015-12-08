@@ -25,7 +25,7 @@ export default class TutorPanel extends React.Component {
             <h4>{this.props.name}</h4>
             <h5>Available: Mon, Thu, Sat</h5>
             <h4>${this.props.price}</h4>
-            <span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{this.props.likes.length} <span className="glyphicon glyphicon-thumbs-down" aria-hidden="true">{this.props.dislikes.length}</span>
+            <span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{} <span className="glyphicon glyphicon-thumbs-down" aria-hidden="true">{}</span>
           </div>
           <div className="col-md-3">
             <h5>
