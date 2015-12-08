@@ -118,19 +118,16 @@ export default class Registration extends React.Component {
               </div>
             </div>
           </div>
-          <hr/>
-          <!-- THE ABOUT ME STUFF STARTS HERE -->
+          <br></br>
           <div className="row">
             <div className="col-md-3">
               <label className="input" htmlFor="#aboutMe"> About Me </label>
-                <div id="aboutMeGroup" className="input-group">
-                  <span className="input-group-addon">$</span>
-                  <input type="text" id="aboutMe" ref="aboutMe" className="form-control"/>
-                </div>
+              <div id="aboutMeGroup" className="input-group">
+                  <input type="text" id="aboutMe" ref="aboutMe" placeholder="hello, I'm here to tutor you" className="form-control"/>
               </div>
             </div>
           </div>
-          <!-- THE ABOUT ME STUFF ENDS HERE -->
+          <hr/>
           <div className="row" style={{paddingLeft: 15}}>
             <button type="button" className="btn btn-primary" onClick={this.sendRegistration.bind(this)}>Confirm</button>
             <button type="button" className="btn btn-default">Cancel</button>

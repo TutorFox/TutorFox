@@ -78,7 +78,7 @@ usersRouter.post('/classes/:id', function(req,res){
     //using shortcircuit again here.
     console.log(req.body.tutorClasses);
     user.price = req.body.price || user.price;
-    user.aboutMe = req.body.aboutMe || user.aboutMe
+    user.aboutMe = req.body.aboutMe || user.aboutMe;
     user.tutorClasses = req.body.tutorClasses;
     user.showGrades = req.body.showGrades;
     user.save(function(err){
@@ -89,3 +89,5 @@ usersRouter.post('/classes/:id', function(req,res){
     });
   });
 });
+
+module.exports = usersRouter;

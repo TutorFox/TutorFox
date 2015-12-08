@@ -178,7 +178,7 @@ export var TutorPage = requireAuth(class extends React.Component {
                     </div>
                   </div>
                   <h4 style={{textIndent: 1 + "em"}}>About Me</h4>
-                  <p>{{this.state.aboutMe}}</p>
+                  <p>{this.state.aboutMe}</p>
                 </div>
                 <div className="panel-footer">
                   <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#requestModal">Request Tutor</button>
