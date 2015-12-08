@@ -70,7 +70,6 @@ usersRouter.post('/general/:id', function(req, res) {
 usersRouter.post('/classes/:id', function(req,res){
   console.log(req.params.id);
   User.findOne({user: req.params.id}, function(err,user){
-    user
     if(err){
       console.log(err);
       return err;
