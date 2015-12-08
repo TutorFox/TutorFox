@@ -59,10 +59,11 @@ export default class Registration extends React.Component {
     });
 
     const price = React.findDOMNode(this.refs.price).value;
+    const showGrades = React.findDOMNode(this.refs.showGrades).checked;
     $.ajax({
       url: 'users/classes/'+localStorage.user,
       type: 'POST',
-      data: {tutorClasses: tutorClasses, price: price},
+      data: {tutorClasses: tutorClasses, price: price, showGrades: showGrades},
       dataType: "json",
       success: function(data) {
         location.reload();
@@ -98,7 +99,7 @@ export default class Registration extends React.Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-3"><label className="checkbox" for="showGrades"><input type="checkbox" id="showGrades"/> Show your grades for these subjects</label>
+                <div className="col-md-3"><label className="checkbox" for="showGrades"><input type="checkbox" id="showGrades" ref="showGrades"/> Show your grades for these subjects</label>
                 </div>
               </div>
             </div>
