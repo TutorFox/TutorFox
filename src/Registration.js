@@ -12,6 +12,9 @@ export default class Registration extends React.Component {
     setTimeout( () => {
       React.findDOMNode(this.refs.price).value = this.props.price;
     }, 500);
+    setTimeout( () => {
+      React.findDOMNode(this.refs.showGrades).checked = this.props.showGrades;
+    }, 500);
   }
   checkClasses() {
     if(this.props.classes.lenght == 0){
@@ -59,10 +62,12 @@ export default class Registration extends React.Component {
     });
 
     const price = React.findDOMNode(this.refs.price).value;
+    const showGrades = React.findDOMNode(this.refs.showGrades).checked;
+    const aboutMe = React.findDOMNode(this.refs.aboutMe).value;
     $.ajax({
       url: 'users/classes/'+localStorage.user,
       type: 'POST',
-      data: {tutorClasses: tutorClasses, price: price},
+      data: {tutorClasses: tutorClasses, price: price, showGrades: showGrades, aboutMe: aboutMe},
       dataType: "json",
       success: function(data) {
         location.reload();
@@ -98,7 +103,7 @@ export default class Registration extends React.Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-3"><label className="checkbox" for="showGrades"><input type="checkbox" id="showGrades"/> Show your grades for these subjects</label>
+                <div className="col-md-3"><label className="checkbox" for="showGrades"><input type="checkbox" id="showGrades" ref="showGrades"/> Show your grades for these subjects</label>
                 </div>
               </div>
             </div>
@@ -110,6 +115,15 @@ export default class Registration extends React.Component {
                 <span className="input-group-addon">$</span>
                 <input type="number" min="0" max="999" step="1" id="price" ref="price" className="form-control" aria-label="Amount"/>
                 <span className="input-group-addon">.00</span>
+              </div>
+            </div>
+          </div>
+          <br></br>
+          <div className="row">
+            <div className="col-md-3">
+              <label className="input" htmlFor="#aboutMe"> About Me </label>
+              <div id="aboutMeGroup" className="input-group">
+                  <input type="text" id="aboutMe" ref="aboutMe" placeholder="hello, I'm here to tutor you" className="form-control"/>
               </div>
             </div>
           </div>

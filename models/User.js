@@ -13,6 +13,7 @@ var User = mongoose.Schema({
   reviews: [],
   likes: [],
   dislikes: [],
+  showGrades: Boolean,
 });
 
 module.exports = mongoose.model('User', User);

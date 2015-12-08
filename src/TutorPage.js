@@ -21,7 +21,9 @@ export var TutorPage = requireAuth(class extends React.Component {
       tutorClasses: [],
       reviews: [],
       likes: [],
-      dislikes: []
+      dislikes: [],
+      showGrades: true,
+      aboutMe: "",
     };
 
     this.handlelogout = this.handlelogout.bind(this);
@@ -58,7 +60,9 @@ export var TutorPage = requireAuth(class extends React.Component {
           tutorClasses: data.tutorClasses,
           reviews : data.reviews,
           likes : data.likes,
-          dislikes: data.dislikes
+          dislikes: data.dislikes,
+          showGrades: data.showGrades,
+          aboutMe: data.aboutMe
         });
       }.bind(this)
     })
@@ -92,7 +96,6 @@ export var TutorPage = requireAuth(class extends React.Component {
   }
 
   onButtonClick(e) {
-    alert('button clicked' + this.props.id);
     $.ajax({
       url: 'request/' + this.props.params.id,
       type: 'POST',
@@ -105,7 +108,6 @@ export var TutorPage = requireAuth(class extends React.Component {
   }
 
   handleComment(e) {
-    alert('button comment');
     let comment = React.findDOMNode(this.refs.comment).value;
     let that = this;
     $.ajax({
@@ -114,22 +116,21 @@ export var TutorPage = requireAuth(class extends React.Component {
       data: {user: localStorage.user, comment: comment.trim()},
       dataType: 'json',
       success: function() {
-        alert('comment sent');
         React.findDOMNode(that.refs.comment).value = " ";
         that.reloadData();
       }
     })
-    
+
   }
 
-  render () { 
+  render () {
     const left = this.state.tutorClasses.slice(0,5).map(course => {
-      return(<li>{course.name}{this.props.showGrades?": "+course.grade:""}</li>);
+      return(<li>{course.name}{this.state.showGrades?": "+course.grade:""}</li>);
     })
     const right = this.state.tutorClasses.slice(5).map(course => {
-      return(<li>{course.name}{this.props.showGrades?": "+course.grade:""}</li>);
+      return(<li>{course.name}{this.state.showGrades?": "+course.grade:""}</li>);
     })
-  
+
     const dropdown = this.state.tutorClasses.map(course => {
       return (<li><a  data-value = {course.name} onClick={this.handleClick.bind(this)}>{course.name}</a></li> )
     })
@@ -158,7 +159,7 @@ export var TutorPage = requireAuth(class extends React.Component {
                     <div className="col-md-3">
                       <h5>Available: Mon, Thu, Sat</h5>
                       <h4>{this.state.price}$</h4>
-                      <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{this.state.likes.length}</button> 
+                      <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{this.state.likes.length}</button>
                       <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>{this.state.dislikes.length}</button>
                     </div>
                     <div className="col-md-3">
@@ -174,7 +175,7 @@ export var TutorPage = requireAuth(class extends React.Component {
                     </div>
                   </div>
                   <h4 style={{textIndent: 1 + "em"}}>About Me</h4>
-                  <p>Gamer dudes, dudettes. When it comes to keeping your gaming gear at peak performance; oh the games people play. I'll tell ya, really. A lot of you game assassins seem to think that skill alone will get you to the victory lane, as you go leaping from level to level, room to room, and world to world; with little or no effort. Oh, planet rangers! Do you want to know a dirty little secret? Yeah-Huh? Do ya? Do ya? Go to www.dust-off.com/dirtygaming to learn more.</p>
+                  <p>{this.state.aboutMe}</p>
                 </div>
                 <div className="panel-footer">
                   <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#requestModal">Request Tutor</button>
@@ -184,8 +185,8 @@ export var TutorPage = requireAuth(class extends React.Component {
             <h3 style={{textIndent: 1 +'em'}}>Write your Review for this Tutor</h3>
             <form>
               <div className="btn-group" role="group">
-                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button> 
-                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>  
+                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-success up"><span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+                <button type="button" onClick={this.handleLike.bind(this)} className="btn btn-danger down"><span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
               </div>
               <textarea ref="comment" className="form-control" rows="5" placeholder="Write a review."></textarea>
               <div className="btn-group" onClick={this.handleComment.bind(this)} role="group"><button type="button" className="btn btn-primary" id="submitreview">Submit</button></div>
