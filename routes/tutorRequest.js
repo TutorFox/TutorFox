@@ -31,6 +31,23 @@ requestRouter.post('/:id/', function(req,res) {
   });
 });
 
+requestRouter.post('/all/:id/', function (req,res) {
+  User.findOne({user: req.params.id}, function(err,user) {
+    if(err) {
+      console.log(err);
+      return err;
+    }
+    user.requests = req.body.requests;
+    user.save(function(err){
+      if(err){
+        console.log(err);
+        return err;
+      }
+      res.send(user.requests);
+    });
+  });
+});
+
 /*******************************************************************************
 * Get for the dashboard when requests are shown                                *
 * a param will be the personal id of the tutor called id                       *
