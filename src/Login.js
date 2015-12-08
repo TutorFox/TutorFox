@@ -28,6 +28,7 @@ export class Login extends React.Component {
       } else {
         router.replaceWith('dashboard');
       }
+      $("#logInModal").modal("hide");
     });
   }
 
@@ -61,27 +62,26 @@ export class Login extends React.Component {
         <div className="modal fade" id="logInModal" tabIndex="-1" role="dialog" aria-labelledby="logInModalLaber">
             <div className="modal-dialog modal-sm" role="dialog">
                 <div className="modal-content">
+                  <form onSubmit={this.handleSubmit}>
                     <div className="modal-header">
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 className="modal-title" id="logInModalLabel">Log In with your ID Number and Blackboard Password</h4>
                     </div>
                     <div className="modal-body">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="loginID">ID Number</label>
-                                <input ref="user" type="text" className="form-control" id="loginID" placeholder="m0XXXXX" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="loginPassword">Password</label>
-                                <input ref="password" type="password" className="form-control" id="loginPassword" placeholder="********" />
-                            </div>
-                        </form>
+                      <div className="form-group">
+                        <label htmlFor="loginID">ID Number</label>
+                        <input ref="user" type="text" className="form-control" id="loginID" placeholder="m0XXXXX" />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="loginPassword">Password</label>
+                        <input ref="password" type="password" className="form-control" id="loginPassword" placeholder="********" />
+                      </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                        <button data-dismiss="modal" onClick={this.handleSubmit} type="submit" className="btn btn-primary">Log In</button>
-                    
+                      <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                      <input  type="submit" value="Log in" className="btn btn-primary"/ >
                     </div>
+                  </form>
                 </div>
             </div>
         </div>
