@@ -65,6 +65,7 @@ usersRouter.post('/general/:id', function(req, res) {
 *   -it can also contain the price, if there isn't one the one used before will be used             *
 *   -ID is part of the route, it's not a body value                                                 *
 *   -showGrades variable should be a boolean that tells you if grades should be shown or not        *
+*   -aboutMe variable should contain a string that is the about me of the tutor                     *
 ****************************************************************************************************/
 
 usersRouter.post('/classes/:id', function(req,res){
@@ -77,6 +78,7 @@ usersRouter.post('/classes/:id', function(req,res){
     //using shortcircuit again here.
     console.log(req.body.tutorClasses);
     user.price = req.body.price || user.price;
+    user.aboutMe = req.body.aboutMe || user.aboutMe
     user.tutorClasses = req.body.tutorClasses;
     user.showGrades = req.body.showGrades;
     user.save(function(err){
@@ -87,24 +89,3 @@ usersRouter.post('/classes/:id', function(req,res){
     });
   });
 });
-
-/******************************************************************************************
-* id about me will contain as a param the id of the user that's making the POST           *
-* it will contain a body that will contain a string called aboutMe                        *
-******************************************************************************************/
-
-usersRouter.post('/aboutme/:id', function(req, res){
-  User.find({user: req.params.id}, function(err, user){
-    if(err){
-      console.log(err);
-      return err;
-    }
-    user.aboutMe = req.body.aboutMe;
-    user.save(function(err){
-      if(err) return err;
-      res.send(user);
-    });
-  });
-});
-
-module.exports = usersRouter;

@@ -14,7 +14,7 @@ export default class Registration extends React.Component {
     }, 500);
     setTimeout( () => {
       React.findDOMNode(this.refs.showGrades).checked = this.props.showGrades;
-    })
+    }, 500);
   }
   checkClasses() {
     if(this.props.classes.lenght == 0){
@@ -63,10 +63,11 @@ export default class Registration extends React.Component {
 
     const price = React.findDOMNode(this.refs.price).value;
     const showGrades = React.findDOMNode(this.refs.showGrades).checked;
+    const aboutMe = React.findDOMNode(this.refs.aboutMe).value;
     $.ajax({
       url: 'users/classes/'+localStorage.user,
       type: 'POST',
-      data: {tutorClasses: tutorClasses, price: price, showGrades: showGrades},
+      data: {tutorClasses: tutorClasses, price: price, showGrades: showGrades, aboutMe: aboutMe},
       dataType: "json",
       success: function(data) {
         location.reload();
@@ -118,6 +119,18 @@ export default class Registration extends React.Component {
             </div>
           </div>
           <hr/>
+          <!-- THE ABOUT ME STUFF STARTS HERE -->
+          <div className="row">
+            <div className="col-md-3">
+              <label className="input" htmlFor="#aboutMe"> About Me </label>
+                <div id="aboutMeGroup" className="input-group">
+                  <span className="input-group-addon">$</span>
+                  <input type="text" id="aboutMe" ref="aboutMe" className="form-control"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- THE ABOUT ME STUFF ENDS HERE -->
           <div className="row" style={{paddingLeft: 15}}>
             <button type="button" className="btn btn-primary" onClick={this.sendRegistration.bind(this)}>Confirm</button>
             <button type="button" className="btn btn-default">Cancel</button>

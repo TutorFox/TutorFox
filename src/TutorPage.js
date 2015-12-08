@@ -23,6 +23,7 @@ export var TutorPage = requireAuth(class extends React.Component {
       likes: [],
       dislikes: [],
       showGrades: true,
+      aboutMe: "",
     };
 
     this.handlelogout = this.handlelogout.bind(this);
@@ -60,7 +61,8 @@ export var TutorPage = requireAuth(class extends React.Component {
           reviews : data.reviews,
           likes : data.likes,
           dislikes: data.dislikes,
-          showGrades: data.showGrades
+          showGrades: data.showGrades,
+          aboutMe: data.aboutMe
         });
       }.bind(this)
     })
@@ -176,7 +178,7 @@ export var TutorPage = requireAuth(class extends React.Component {
                     </div>
                   </div>
                   <h4 style={{textIndent: 1 + "em"}}>About Me</h4>
-                  <p>Gamer dudes, dudettes. When it comes to keeping your gaming gear at peak performance; oh the games people play. I'll tell ya, really. A lot of you game assassins seem to think that skill alone will get you to the victory lane, as you go leaping from level to level, room to room, and world to world; with little or no effort. Oh, planet rangers! Do you want to know a dirty little secret? Yeah-Huh? Do ya? Do ya? Go to www.dust-off.com/dirtygaming to learn more.</p>
+                  <p>{{this.state.aboutMe}}</p>
                 </div>
                 <div className="panel-footer">
                   <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#requestModal">Request Tutor</button>
