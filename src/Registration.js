@@ -12,6 +12,9 @@ export default class Registration extends React.Component {
     setTimeout( () => {
       React.findDOMNode(this.refs.price).value = this.props.price;
     }, 500);
+    setTimeout( () => {
+      React.findDOMNode(this.refs.showGrades).checked = this.props.showGrades;
+    })
   }
   checkClasses() {
     if(this.props.classes.lenght == 0){
