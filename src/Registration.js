@@ -56,7 +56,7 @@ export default class Registration extends React.Component {
     });
 
     const price = React.findDOMNode(this.refs.price).value;
-    const showGrades = React.findDOMNode(this.refs.showGrades).value;
+    const showGrades = React.findDOMNode(this.refs.showGrades).checked;
     $.ajax({
       url: 'users/classes/'+localStorage.user,
       type: 'POST',
