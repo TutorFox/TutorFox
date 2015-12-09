@@ -27,7 +27,7 @@ var mainstyle = {
 export var Dashboard = requireAuth(class extends React.Component {
   constructor() {
     super();
-    this.state = {name: "", email : "", phone: "", price: "", showGrades: true, classes: [],tutorClasses: [], requests: []};
+    this.state = {name: "", email : "", phone: "", price: "", about: "", showGrades: true, classes: [],tutorClasses: [], requests: []};
     this.handleLogout = this.handleLogout.bind(this);
   }
   handleLogout () {
@@ -39,7 +39,7 @@ export var Dashboard = requireAuth(class extends React.Component {
       url: '/users/'+localStorage.user,
       type: 'GET',
       success: function (data) {
-        this.setState({name: data.name, price: data.price, showGrades: data.showGrades, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses, requests: data.requests});
+        this.setState({name: data.name, about: data.aboutMe, price: data.price, showGrades: data.showGrades, phone: data.phone, email: data.email, classes: data.classes, tutorClasses: data.tutorClasses, requests: data.requests});
       }.bind(this)
     })
     setInterval(this.checkUpdates.bind(this), 5000);
@@ -117,7 +117,7 @@ export var Dashboard = requireAuth(class extends React.Component {
                 <div className="tab-content">
                   <Tutors />
                   <Settings tutorClasses={this.state.tutorClasses} email={this.state.email} phone={this.state.phone}/>
-                  <Registration tutorClasses={this.state.tutorClasses} classes={this.state.classes} price={this.state.price} showGrades={this.state.showGrades}/>
+                  <Registration aboutMe={this.state.about} tutorClasses={this.state.tutorClasses} classes={this.state.classes} price={this.state.price} showGrades={this.state.showGrades}/>
                   <Requests requests={this.state.requests} deleteRequest={this.deleteRequest.bind(this)}/>
                 </div>
               </div>

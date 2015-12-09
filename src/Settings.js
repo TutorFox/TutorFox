@@ -8,6 +8,7 @@ export default class Settings extends React.Component {
   }
   getPhone(){
     React.findDOMNode(this.refs.phone).value = this.props.phone;
+    React.findDOMNode(this.refs.email).value = this.props.email;
     if(!React.findDOMNode(this.refs.phone).value){
       setTimeout(this.getPhone.bind(this), 500);
     }
@@ -33,7 +34,7 @@ export default class Settings extends React.Component {
 	<form>
 	  <div className="form-group">
 	    <label for="emailSet">E-Mail</label>
-	    <input type="email" className="form-control" ref="email" id="emailSet" value={this.props.email}/>
+	    <input type="email" className="form-control" ref="email" id="emailSet" />
 	  </div>
 	  <div className="form-group">
 	    <label for="telSet">Telephone</label>
